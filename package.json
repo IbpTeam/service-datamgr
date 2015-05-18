@@ -1,6 +1,6 @@
 {
   "author": "wangbo",
-  "name": "data",
+  "name": "datamgr",
   "description": "data api in RPC",
   "version": "0.1.0",
   "repository": {
