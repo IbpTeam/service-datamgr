@@ -13,7 +13,7 @@ var initObj = {
 
 function Proxy() {
   // TODO: please replace $IPC with the real path of webde-rpc module in your project
-  this._ipc = require('../../../webde-rpc').getIPC(initObj);
+  this._ipc = require('webde-rpc').getIPC(initObj);
   this._token = 0;
 
   // TODO: choose to implement interfaces of ipc
