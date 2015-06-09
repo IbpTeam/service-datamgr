@@ -8,7 +8,7 @@
   },
   "main": "start.js",
   "dependencies": {
-    "webde-rpc": "../webde-rpc"
+    "webde-rpc": "~0.1.0"
   },
   "devDependencies": {},
   "optionalDependencies": {},
