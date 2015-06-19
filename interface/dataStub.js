@@ -1,4 +1,4 @@
-var dataAPI = require('../implements/data.js');
+var dataAPI = require('demo-rio').requireDataHandle();
 // This file is auto generated based on user-defined interface.
 // Please make sure that you have checked all TODOs in this file.
 // TODO: please replace types with peramters' name you wanted of any functions
@@ -24,7 +24,9 @@ var initObj = {
     "show": "l"
   }, {
     "name": "loadFile",
-    "in": [],
+    "in": [
+    "String"
+    ],
     "show": "l"
   }, {
     "name": "loadResources",
@@ -66,11 +68,15 @@ var initObj = {
     "show": "l"
   }, {
     "name": "getDataByPath",
-    "in": [],
+    "in": [
+      "String"
+    ],
     "show": "l"
   }, {
     "name": "openDataByUri",
-    "in": [],
+    "in": [
+      "String"
+    ],
     "show": "l"
   }, {
     "name": "openDataByPath",
@@ -78,11 +84,15 @@ var initObj = {
     "show": "l"
   }, {
     "name": "updateDataValue",
-    "in": [],
+    "in": [
+      "Object"
+    ],
     "show": "l"
   }, {
     "name": "getRecentAccessData",
-    "in": [],
+    "in": [
+      "Object"
+    ],
     "show": "l"
   }, {
     "name": "getServerAddress",
@@ -106,11 +116,15 @@ var initObj = {
     "show": "l"
   }, {
     "name": "getAllTagsByCategory",
-    "in": [],
+    "in": [
+      "Array"
+    ],
     "show": "l"
   }, {
     "name": "getTagsByUri",
-    "in": [],
+    "in": [
+      "String"
+    ],
     "show": "l"
   }, {
     "name": "getTagsByUris",
@@ -126,11 +140,15 @@ var initObj = {
     "show": "l"
   }, {
     "name": "getFilesByTags",
-    "in": [],
+    "in": [
+      "Array"
+    ],
     "show": "l"
   }, {
     "name": "getFilesByTagsInCategory",
-    "in": [],
+    "in": [
+      "Object"
+    ],
     "show": "l"
   }, {
     "name": "rmTagsAll",
@@ -261,7 +279,16 @@ var initObj = {
     getLocalData: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
     startIMChatServer: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
     sendIMMsg: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-    loadFile: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
+    loadFile: function(val, callback) {
+      dataAPI.loadFile(function(err,result){
+        var retObj = new Object();
+        retObj.ret = result;
+        if (err) {
+          retObj.retErr = err;
+        };
+        callback(retObj);
+      }, val);
+    },
     loadResources: function(val, callback) {
       dataAPI.loadResources(function(err, result) {
         var retObj = new Object();
@@ -325,45 +352,120 @@ var initObj = {
         callback(retObj);
       },val);
     },
-    getDataByPath: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-    openDataByUri: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-    openDataByPath: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-    updateDataValue: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-    getRecentAccessData: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-    getServerAddress: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-    getDeviceDiscoveryService: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-    pasteFile: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-    createFile: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
+    getDataByPath: function(val, callback) {
+      dataAPI.getDataByPath(function(err,result){
+        var retObj = new Object();
+        if (err !== null) {
+          retObj.ret = result;
+        }else{
+          console.log("call getDataByPath error in dataStub. ");
+        }
+        callback(retObj);
+      },val);
+    },
+    openDataByUri: function(val, callback) {
+      dataAPI.openDataByUri(function(res){
+        var retObj = new Object();
+        retObj.ret = res;
+        callback(retObj);
+      },val);
+    },
+    openDataByPath: function(callback) {},
+    updateDataValue: function(obj, callback) {
+      dataAPI.updateDataValue(function(err,result){
+        var retObj = new Object();
+        if (err) {
+          console.log("call updateDataValue error in dataStub. ");
+        }else{
+          retObj.ret = res;
+        }
+        callback(retObj);
+      }, obj.item, obj.uri);
+    },
+    getRecentAccessData: function(obj, callback) {
+      dataAPI.getRecentAccessData(function(err,result){
+        var retObj = new Object();
+        if (err) {
+          console.log("call getRecentAccessData error in dataStub. ");
+        }else{
+          retObj.ret = result;
+        }
+        callback(retObj);
+      }, obj.category, obj.num);
+    },
+    getServerAddress: function(callback) {
+      dataAPI.getServerAddress(function(res){
+        var retObj = new Object();
+        retObj.ret = res;
+        callback(retObj);
+      });
+    },
+    getDeviceDiscoveryService: function(callback) {
+      dataAPI.getDeviceDiscoveryService(function(typ,data){
+        var retObj = new Object();
+        var obj = new Object();
+        obj.typ = typ;
+        obj.dat = data;
+        retObj.ret = obj;
+        callback(retObj);
+      });
+    },
+    /*to be ensure*/pasteFile: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
+    /*to be ensure*/createFile: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
     getResourceDataDir: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-    getAllTagsByCategory: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-    getTagsByUri: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-    getTagsByUris: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
+    getAllTagsByCategory: function(val, callback) {
+      dataAPI.getAllTagsByCategory(function(res){
+        var retObj = new Object();
+        retObj.ret = res;
+        callback(retObj);
+      }, val);
+    },
+    getTagsByUri: function(val, callback) {
+      dataAPI.getTagsByUri(function(res){
+        var retObj = new Object();
+        retObj.ret = res;
+        callback(retObj);
+      }, val);
+    },
+     /*deleted*/getTagsByUris: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
     setTagByUri: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
     setTagByUriMulti: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-    getFilesByTags: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-    getFilesByTagsInCategory: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
+    getFilesByTags: function(val, callback) {
+      dataAPI.getFilesByTags(function(res){
+        var retObj = new Object();
+        retObj.ret = res;
+        callback(retObj);
+      }, val);
+    },
+    getFilesByTagsInCategory: function(val, callback) {
+      dataAPI.getFilesByTagsInCategory(function(res){
+        var retObj = new Object();
+        retObj.ret = res;
+        callback(retObj);
+      },val.category,val.oTags);
+    },
     rmTagsAll: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
     rmTagsByUri: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-    initDesktop: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-    getAllDesktopFile: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-    readDesktopConfig: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-    writeDesktopConfig: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-    shellExec: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-    moveFile: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-    renameDesktopFile: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-    linkAppToDesktop: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-    unlinkApp: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-    moveToDesktopSingle: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-    moveToDesktop: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-    removeFileFromDB: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-    removeFileFromDesk: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-    getFilesFromDesk: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-    getAllVideo: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-    getAllMusic: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-    createFileOnDesk: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-    renameFileOnDesk: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-    getIconPath: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-    setRelativeTagByPath: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
+     /*to be ensure*/initDesktop: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
+     /*to be ensure*/getAllDesktopFile: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
+     /*to be ensure*/readDesktopConfig: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
+     /*to be ensure*/writeDesktopConfig: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
+     /*to be ensure*/shellExec: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
+     /*to be ensure*/moveFile: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
+     /*to be ensure*/renameDesktopFile: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
+     /*to be ensure*/linkAppToDesktop: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
+     /*to be ensure*/unlinkApp: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
+     /*to be ensure*/moveToDesktopSingle: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
+     /*to be ensure*/moveToDesktop: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
+     /*to be ensure*/removeFileFromDB: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
+     /*to be ensure*/removeFileFromDesk: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
+     /*to be ensure*/getFilesFromDesk: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
+     /*to be ensure*/getAllVideo: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
+     /*to be ensure*/getAllMusic: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
+     /*to be ensure*/createFileOnDesk: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
+     /*to be ensure*/renameFileOnDesk: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
+     /*to be ensure*/getIconPath: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
+     /*to be ensure*/setRelativeTagByPath: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
     pullFromOtherRepoTest: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
     getGitLog: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
     repoReset: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
