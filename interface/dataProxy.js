@@ -103,7 +103,7 @@ Proxy.prototype.sendIMMsg = function(callback) {
  * @return
  *    what will return from this interface
  */
-Proxy.prototype.loadFile = function(callback) {
+Proxy.prototype.loadFile = function(String, callback) {
   var l = arguments.length,
       args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
@@ -255,7 +255,7 @@ Proxy.prototype.getDataByUri = function(String, callback) {
  * @return
  *    what will return from this interface
  */
-Proxy.prototype.getDataByPath = function(callback) {
+Proxy.prototype.getDataByPath = function(String, callback) {
   var l = arguments.length,
       args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
@@ -274,7 +274,7 @@ Proxy.prototype.getDataByPath = function(callback) {
  * @return
  *    what will return from this interface
  */
-Proxy.prototype.openDataByUri = function(callback) {
+Proxy.prototype.openDataByUri = function(String, callback) {
   var l = arguments.length,
       args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
@@ -312,7 +312,7 @@ Proxy.prototype.openDataByPath = function(callback) {
  * @return
  *    what will return from this interface
  */
-Proxy.prototype.updateDataValue = function(callback) {
+Proxy.prototype.updateDataValue = function(Object, callback) {
   var l = arguments.length,
       args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
@@ -331,7 +331,7 @@ Proxy.prototype.updateDataValue = function(callback) {
  * @return
  *    what will return from this interface
  */
-Proxy.prototype.getRecentAccessData = function(callback) {
+Proxy.prototype.getRecentAccessData = function(Object, callback) {
   var l = arguments.length,
       args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
@@ -445,7 +445,7 @@ Proxy.prototype.getResourceDataDir = function(callback) {
  * @return
  *    what will return from this interface
  */
-Proxy.prototype.getAllTagsByCategory = function(callback) {
+Proxy.prototype.getAllTagsByCategory = function(Array, callback) {
   var l = arguments.length,
       args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
@@ -502,7 +502,7 @@ Proxy.prototype.getTagsByUris = function(callback) {
  * @return
  *    what will return from this interface
  */
-Proxy.prototype.setTagByUri = function(callback) {
+Proxy.prototype.setTagByUri = function(String, callback) {
   var l = arguments.length,
       args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
@@ -540,7 +540,7 @@ Proxy.prototype.setTagByUriMulti = function(callback) {
  * @return
  *    what will return from this interface
  */
-Proxy.prototype.getFilesByTags = function(callback) {
+Proxy.prototype.getFilesByTags = function(String, callback) {
   var l = arguments.length,
       args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
@@ -559,7 +559,7 @@ Proxy.prototype.getFilesByTags = function(callback) {
  * @return
  *    what will return from this interface
  */
-Proxy.prototype.getFilesByTagsInCategory = function(callback) {
+Proxy.prototype.getFilesByTagsInCategory = function(Object, callback) {
   var l = arguments.length,
       args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
