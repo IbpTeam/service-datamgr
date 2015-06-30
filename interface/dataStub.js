@@ -104,7 +104,9 @@ var initObj = {
     "show": "l"
   }, {
     "name": "pasteFile",
-    "in": [],
+     "in": [
+      "Object"
+    ],
     "show": "l"
   }, {
     "name": "createFile",
@@ -132,7 +134,9 @@ var initObj = {
     "show": "l"
   }, {
     "name": "setTagByUri",
-    "in": [],
+    "in": [
+      "Object"
+    ],
     "show": "l"
   }, {
     "name": "setTagByUriMulti",
@@ -151,12 +155,16 @@ var initObj = {
     ],
     "show": "l"
   }, {
-    "name": "rmTagsAll",
-    "in": [],
+    "name": "rmTagAll",
+    "in": [
+      "Object"
+    ],
     "show": "l"
   }, {
     "name": "rmTagsByUri",
-    "in": [],
+    "in": [
+      "Object"
+    ],
     "show": "l"
   }, {
     "name": "initDesktop",
@@ -168,47 +176,69 @@ var initObj = {
     "show": "l"
   }, {
     "name": "readDesktopConfig",
-    "in": [],
+    "in": [
+      "String"
+    ],
     "show": "l"
   }, {
     "name": "writeDesktopConfig",
-    "in": [],
+    "in": [
+      "Object"
+    ],
     "show": "l"
   }, {
     "name": "shellExec",
-    "in": [],
+    "in": [
+      "String"
+    ],
     "show": "l"
   }, {
     "name": "moveFile",
-    "in": [],
+    "in": [
+      "Object"
+    ],
     "show": "l"
   }, {
     "name": "renameDesktopFile",
-    "in": [],
+    "in": [
+      "Object"
+    ],
     "show": "l"
   }, {
     "name": "linkAppToDesktop",
-    "in": [],
+    "in": [
+      "Object"
+    ],
     "show": "l"
   }, {
     "name": "unlinkApp",
-    "in": [],
+    "in": [
+      "String"
+    ],
     "show": "l"
   }, {
     "name": "moveToDesktopSingle",
-    "in": [],
+    "in": [
+      "String"
+    ],
     "show": "l"
   }, {
     "name": "moveToDesktop",
-    "in": [],
+    "in": [
+      "String"
+    ],
     "show": "l"
   }, {
     "name": "removeFileFromDB",
-    "in": [],
+    "in": [
+      "String"
+    ],
     "show": "l"
   }, {
     "name": "removeFileFromDesk",
-    "in": [],
+    "in": [
+      "String"
+    ],
     "show": "l"
   }, {
     "name": "getFilesFromDesk",
@@ -224,19 +254,27 @@ var initObj = {
     "show": "l"
   }, {
     "name": "createFileOnDesk",
-    "in": [],
+    "in": [
+      "String"
+    ],
     "show": "l"
   }, {
     "name": "renameFileOnDesk",
-    "in": [],
+    "in": [
+      "Object"
+    ],
     "show": "l"
   }, {
     "name": "getIconPath",
-    "in": [],
+    "in": [
+      "Object"
+    ],
     "show": "l"
   }, {
     "name": "setRelativeTagByPath",
-    "in": [],
+    "in": [
+      "Object"
+    ],
     "show": "l"
   }, {
     "name": "pullFromOtherRepoTest",
@@ -256,7 +294,9 @@ var initObj = {
     "show": "l"
   }, {
     "name": "renameDataByUri",
-    "in": [],
+    "in": [
+      "Object"
+    ],
     "show": "l"
   }, {
     "name": "deviceInfo",
@@ -264,11 +304,15 @@ var initObj = {
     "show": "l"
   }, {
     "name": "getMusicPicData",
-    "in": [],
+    "in": [
+      "String"
+    ],
     "show": "l"
   }, {
     "name": "getVideoThumbnail",
-    "in": [],
+    "in": [
+      "String"
+    ],
     "show": "l"
   }, {
     "name": "repoSearch",
@@ -370,7 +414,7 @@ var initObj = {
         callback(retObj);
       },val);
     },
-    openDataByPath: function(callback) {},
+     /*deleted*/openDataByPath: function(callback) {},
     updateDataValue: function(obj, callback) {
       dataAPI.updateDataValue(function(err,result){
         var retObj = new Object();
@@ -394,14 +438,14 @@ var initObj = {
       }, obj.category, obj.num);
     },
     getServerAddress: function(callback) {
-      dataAPI.getServerAddress(function(res){
+      dataAPI.getServerAddress(function(res) {
         var retObj = new Object();
         retObj.ret = res;
         callback(retObj);
       });
     },
     getDeviceDiscoveryService: function(callback) {
-      dataAPI.getDeviceDiscoveryService(function(typ,data){
+      dataAPI.getDeviceDiscoveryService(function(typ, data) {
         var retObj = new Object();
         var obj = new Object();
         obj.typ = typ;
@@ -410,9 +454,35 @@ var initObj = {
         callback(retObj);
       });
     },
-    /*to be ensure*/pasteFile: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-    /*to be ensure*/createFile: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-    getResourceDataDir: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
+    pasteFile: function(obj, callback) {
+      dataAPI.pasteFile(function(err, result) {
+        var retObj = new Object();
+        if (err) {
+          console.log("call pasteFile error in dataStub. ");
+        } else {
+          retObj.ret = result;
+        }
+        callback(retObj);
+      }, obj.filename, obj.category);
+    },
+    createFile: function(obj, callback) {
+      dataAPI.createFile(function(err, result) {
+        var retObj = new Object();
+        if (err) {
+          console.log("call createFile error in dataStub. ");
+        } else {
+          retObj.ret = result;
+        }
+        callback(retObj);
+      }, obj.filename, obj.category);
+    },
+    getResourceDataDir: function(callback) { 
+       dataAPI.getResourceDataDir(function(res) {
+        var retObj = new Object();
+        retObj.ret = res;
+        callback(retObj);
+      });
+    },
     getAllTagsByCategory: function(val, callback) {
       dataAPI.getAllTagsByCategory(function(res){
         var retObj = new Object();
@@ -428,7 +498,17 @@ var initObj = {
       }, val);
     },
      /*deleted*/getTagsByUris: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-    setTagByUri: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
+    setTagByUri: function(obj, callback) {
+      dataAPI.setTagByUri(function(err, result) {
+        var retObj = new Object();
+        if (err) {
+          console.log("call setTagByUri error in dataStub. ");
+        } else {
+          retObj.ret = result;
+        }
+        callback(retObj);
+      }, obj.oTags, obj.sUri);
+    },
     setTagByUriMulti: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
     getFilesByTags: function(val, callback) {
       dataAPI.getFilesByTags(function(res){
@@ -438,42 +518,238 @@ var initObj = {
       }, val);
     },
     getFilesByTagsInCategory: function(val, callback) {
-      dataAPI.getFilesByTagsInCategory(function(res){
+      dataAPI.getFilesByTagsInCategory(function(res) {
         var retObj = new Object();
         retObj.ret = res;
         callback(retObj);
-      },val.category,val.oTags);
+      }, val.category, val.oTags);
     },
-    rmTagsAll: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-    rmTagsByUri: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-     /*to be ensure*/initDesktop: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-     /*to be ensure*/getAllDesktopFile: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-     /*to be ensure*/readDesktopConfig: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-     /*to be ensure*/writeDesktopConfig: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-     /*to be ensure*/shellExec: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-     /*to be ensure*/moveFile: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-     /*to be ensure*/renameDesktopFile: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-     /*to be ensure*/linkAppToDesktop: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-     /*to be ensure*/unlinkApp: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-     /*to be ensure*/moveToDesktopSingle: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-     /*to be ensure*/moveToDesktop: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-     /*to be ensure*/removeFileFromDB: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-     /*to be ensure*/removeFileFromDesk: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-     /*to be ensure*/getFilesFromDesk: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-     /*to be ensure*/getAllVideo: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-     /*to be ensure*/getAllMusic: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-     /*to be ensure*/createFileOnDesk: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-     /*to be ensure*/renameFileOnDesk: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-     /*to be ensure*/getIconPath: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-     /*to be ensure*/setRelativeTagByPath: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
+    rmTagAll: function(obj, callback) {
+      dataAPI.rmTagAll(function(err, result) {
+        var retObj = new Object();
+        if (err) {
+          console.log("call rmTagAll error in dataStub. ");
+        } else {
+          retObj.ret = result;
+        }
+        callback(retObj);
+      }, obj.oTags, obj.category);
+    },
+    rmTagsByUri: function(obj, callback) {
+      dataAPI.rmTagsByUri(function(err, result) {
+        var retObj = new Object();
+        if (err) {
+          console.log("call rmTagsByUri error in dataStub. ");
+        } else {
+          retObj.ret = result;
+        }
+        callback(retObj);
+      }, obj.sTag, obj.oUri);
+    },
+    initDesktop: function(callback) {
+      dataAPI.initDesktop(function(res) {
+        var retObj = new Object();
+        retObj.ret = res;
+        callback(retObj);
+      });
+    },
+    getAllDesktopFile: function(callback) {
+      dataAPI.getAllDesktopFile(function(res) {
+        var retObj = new Object();
+        retObj.ret = res;
+        callback(retObj);
+      });
+    },
+    readDesktopConfig: function(val, callback) {
+      dataAPI.readDesktopConfig(function(res) {
+        var retObj = new Object();
+        retObj.ret = res;
+        callback(retObj);
+      }, val);
+    },
+    writeDesktopConfig: function(obj, callback) {
+      dataAPI.writeDesktopConfig(function(err, result) {
+        var retObj = new Object();
+        if (err) {
+          console.log("call writeDesktopConfig error in dataStub. ");
+        } else {
+          retObj.ret = result;
+        }
+        callback(retObj);
+      }, obj.sFileName, obj.oContent);
+    },
+    shellExec: function(val, callback) {
+      dataAPI.shellExec(function(res) {
+        var retObj = new Object();
+        retObj.ret = res;
+        callback(retObj);
+      }, val);
+    },
+    moveFile: function(obj, callback) {
+      dataAPI.moveFile(function(err, result) {
+        var retObj = new Object();
+        if (err) {
+          console.log("call moveFile error in dataStub. ");
+        } else {
+          retObj.ret = result;
+        }
+        callback(retObj);
+      }, obj.oldPath, obj.newPath);
+    },
+    renameDesktopFile: function(obj, callback) {
+      dataAPI.renameDesktopFile(function(err, result) {
+        var retObj = new Object();
+        if (err) {
+          console.log("call renameDesktopFile error in dataStub. ");
+        } else {
+          retObj.ret = result;
+        }
+        callback(retObj);
+      }, obj.oldName, obj.newName);
+    },
+    linkAppToDesktop: function(obj, callback) {
+      dataAPI.linkAppToDesktop(function(err, result) {
+        var retObj = new Object();
+        if (err) {
+          console.log("call linkAppToDesktop error in dataStub. ");
+        } else {
+          retObj.ret = result;
+        }
+        callback(retObj);
+      }, obj.sApp, obj.sType);
+    },
+    unlinkApp: function(val, callback) {
+      dataAPI.unlinkApp(function(res) {
+        var retObj = new Object();
+        retObj.ret = res;
+        callback(retObj);
+      }, val);
+    },
+    moveToDesktopSingle: function(val, callback) {
+      dataAPI.moveToDesktopSingle(function(res) {
+        var retObj = new Object();
+        retObj.ret = res;
+        callback(retObj);
+      }, val);
+    },
+    moveToDesktop: function(val, callback) {
+      dataAPI.moveToDesktop(function(res) {
+        var retObj = new Object();
+        retObj.ret = res;
+        callback(retObj);
+      }, val);
+    },
+    removeFileFromDB: function(val, callback) {
+      dataAPI.removeFileFromDB(function(res) {
+        var retObj = new Object();
+        retObj.ret = res;
+        callback(retObj);
+      }, val);
+    },
+    removeFileFromDesk: function(val, callback) {
+      dataAPI.removeFileFromDesk(function(res) {
+        var retObj = new Object();
+        retObj.ret = res;
+        callback(retObj);
+      }, val);
+    },
+    getFilesFromDesk: function(callback) {
+      dataAPI.getFilesFromDesk(function(res) {
+        var retObj = new Object();
+        retObj.ret = res;
+        callback(retObj);
+      });
+    },
+    getAllVideo: function(callback) {
+      dataAPI.getAllVideo(function(res) {
+        var retObj = new Object();
+        retObj.ret = res;
+        callback(retObj);
+      });
+    },
+    getAllMusic: function(callback) {
+      dataAPI.getAllMusic(function(res) {
+        var retObj = new Object();
+        retObj.ret = res;
+        callback(retObj);
+      });
+    },
+    createFileOnDesk: function(val, callback) {
+      dataAPI.createFileOnDesk(function(res) {
+        var retObj = new Object();
+        retObj.ret = res;
+        callback(retObj);
+      }, val);
+    },
+    renameFileOnDesk: function(obj, callback) {
+      dataAPI.renameFileOnDesk(function(err, result) {
+        var retObj = new Object();
+        if (err) {
+          console.log("call renameFileOnDesk error in dataStub. ");
+        } else {
+          retObj.ret = result;
+        }
+        callback(retObj);
+      }, obj.oldName, obj.newName);
+    },
+    getIconPath: function(obj, callback) {
+      dataAPI.getIconPath(function(err, result) {
+        var retObj = new Object();
+        if (err) {
+          console.log("call getIconPath error in dataStub. ");
+        } else {
+          retObj.ret = result;
+        }
+        callback(retObj);
+      }, obj.iconName, obj.size);
+    },
+    setRelativeTagByPath: function(callback) {
+      dataAPI.setRelativeTagByPath(function(err, result) {
+        var retObj = new Object();
+        if (err) {
+          console.log("call setRelativeTagByPath error in dataStub. ");
+        } else {
+          retObj.ret = result;
+        }
+        callback(retObj);
+      }, obj.sFilePath, obj.sTags);
+    },
     pullFromOtherRepoTest: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
     getGitLog: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
     repoReset: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
     repoResetFile: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-    renameDataByUri: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-    deviceInfo: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-    getMusicPicData: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-    getVideoThumbnail: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
+    renameDataByUri: function(obj, callback) {
+      dataAPI.renameDataByUri(function(err, result) {
+        var retObj = new Object();
+        if (err) {
+          console.log("call renameDataByUri error in dataStub. ");
+        } else {
+          retObj.ret = result;
+        }
+        callback(retObj);
+      }, obj.sUri, obj.sNewName);
+    },
+    deviceInfo: function(callback) {
+      dataAPI.deviceInfo(function(res) {
+        var retObj = new Object();
+        retObj.ret = res;
+        callback(retObj);
+      });
+    },
+    getMusicPicData: function(val, callback) {
+      dataAPI.getMusicPicData(function(res) {
+        var retObj = new Object();
+        retObj.ret = res;
+        callback(retObj);
+      }, val);
+    },
+    getVideoThumbnail: function(val, callback) {
+      dataAPI.getVideoThumbnail(function(res) {
+        var retObj = new Object();
+        retObj.ret = res;
+        callback(retObj);
+      }, val);
+    },
     repoSearch: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ }
   }
 }
