@@ -328,9 +328,10 @@ var initObj = {
     loadFile: function(val, callback) {
       dataAPI.loadFile(function(err,result){
         var retObj = new Object();
-        retObj.ret = result;
         if (err) {
           retObj.retErr = err;
+        }else{
+          retObj.ret = "call loadFile success!";
         };
         callback(retObj);
       }, val);
@@ -341,21 +342,23 @@ var initObj = {
         if (err) {
           retObj.retErr = err;
         }else{
-          retObj.ret = "success";
-        }
-        callback(retObj);
-      }, val);
-    },
-    loadContacts: function(val, callback) {
-      dataAPI.loadContacts(function(res) {
-        var retObj = new Object();
-        if (res === null) {
-          retObj.ret = "success";
+          retObj.ret = "call loadResources success!";
         };
         callback(retObj);
       }, val);
     },
-    getAllCate: function(callback) {
+    loadContacts: function(val, callback) {
+      dataAPI.loadContacts(function(err, res) {
+        var retObj = new Object();
+        if (err) {
+          retObj.retErr = err;
+        }else{
+          retObj.ret = "call loadContacts success!";
+        };
+        callback(retObj);
+      }, val);
+    },
+    /*problem*/getAllCate: function(callback) {
       dataAPI.getAllCate(function(res){
         var retObj = new Object();
         retObj.ret = JSON.stringify(res);
@@ -371,12 +374,16 @@ var initObj = {
           retObj.ret = res;
         }
         callback(retObj);
-      },val);
+      }, val);
     },
     getAllContacts: function(callback) {
-      dataAPI.getAllContacts(function(res) {
+      dataAPI.getAllContacts(function(err, res) {
         var retObj = new Object();
-        retObj.ret = res;
+        if (err) {
+          retObj.retErr = err;
+        } else {
+          retObj.ret = res;
+        };
         callback(retObj);
       });
     },
@@ -403,20 +410,24 @@ var initObj = {
       },val);
     },
     getDataByPath: function(val, callback) {
-      dataAPI.getDataByPath(function(err,result){
+      dataAPI.getDataByPath(function(err,res){
         var retObj = new Object();
-        if (err !== null) {
-          retObj.ret = result;
-        }else{
-          console.log("call getDataByPath error in dataStub. ");
-        }
+        if (err) {
+          retObj.retErr = err;
+        } else {
+          retObj.ret = JSON.stringify(res);
+        };
         callback(retObj);
       },val);
     },
     openDataByUri: function(val, callback) {
-      dataAPI.openDataByUri(function(res){
+      dataAPI.openDataByUri(function(err, res){
         var retObj = new Object();
-        retObj.ret = res;
+        if (err) {
+          retObj.retErr = err;
+        } else {
+          retObj.ret = res;
+        };
         callback(retObj);
       },val);
     },
@@ -436,10 +447,10 @@ var initObj = {
       dataAPI.getRecentAccessData(function(err,result){
         var retObj = new Object();
         if (err) {
-          console.log("call getRecentAccessData error in dataStub. ");
+          retObj.retErr = err;
         }else{
           retObj.ret = result;
-        }
+        };
         callback(retObj);
       }, obj.category, obj.num);
     },
@@ -545,12 +556,16 @@ var initObj = {
         callback(retObj);
       }, val);
     },
-    getFilesByTagsInCategory: function(val, callback) {
-      dataAPI.getFilesByTagsInCategory(function(res) {
+    getFilesByTagsInCategory: function(obj, callback) {
+      dataAPI.getFilesByTagsInCategory(function(err, res) {
         var retObj = new Object();
-        retObj.ret = res;
+        if (err) {
+          retObj.retErr = err;
+        }else{
+          retObj.ret = JSON.stringify(res);
+        };
         callback(retObj);
-      }, val.category, val.oTags);
+      }, obj.category, obj.oTags);
     },
     rmTagAll: function(obj, callback) {
       dataAPI.rmTagAll(function(err, result) {
