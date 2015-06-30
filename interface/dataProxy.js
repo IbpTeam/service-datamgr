@@ -578,12 +578,12 @@ Proxy.prototype.getFilesByTagsInCategory = function(Object, callback) {
  * @return
  *    what will return from this interface
  */
-Proxy.prototype.rmTagsAll = function(callback) {
+Proxy.prototype.rmTagAll = function(Object, callback) {
   var l = arguments.length,
       args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
-    name: 'rmTagsAll',
+    name: 'rmTagAll',
     in: args,
     callback: callback
   });
@@ -597,7 +597,7 @@ Proxy.prototype.rmTagsAll = function(callback) {
  * @return
  *    what will return from this interface
  */
-Proxy.prototype.rmTagsByUri = function(callback) {
+Proxy.prototype.rmTagsByUri = function(Object, callback) {
   var l = arguments.length,
       args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
