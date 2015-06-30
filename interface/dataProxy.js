@@ -445,7 +445,7 @@ Proxy.prototype.getResourceDataDir = function(callback) {
  * @return
  *    what will return from this interface
  */
-Proxy.prototype.getAllTagsByCategory = function(Array, callback) {
+Proxy.prototype.getAllTagsByCategory = function(String, callback) {
   var l = arguments.length,
       args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
@@ -464,7 +464,7 @@ Proxy.prototype.getAllTagsByCategory = function(Array, callback) {
  * @return
  *    what will return from this interface
  */
-Proxy.prototype.getTagsByUri = function(callback) {
+Proxy.prototype.getTagsByUri = function(String, callback) {
   var l = arguments.length,
       args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
@@ -483,7 +483,7 @@ Proxy.prototype.getTagsByUri = function(callback) {
  * @return
  *    what will return from this interface
  */
-Proxy.prototype.getTagsByUris = function(callback) {
+Proxy.prototype.getTagsByUris = function(Array, callback) {
   var l = arguments.length,
       args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
@@ -540,7 +540,7 @@ Proxy.prototype.setTagByUriMulti = function(callback) {
  * @return
  *    what will return from this interface
  */
-Proxy.prototype.getFilesByTags = function(String, callback) {
+Proxy.prototype.getFilesByTags = function(Object, callback) {
   var l = arguments.length,
       args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
@@ -654,7 +654,7 @@ Proxy.prototype.getAllDesktopFile = function(callback) {
  * @return
  *    what will return from this interface
  */
-Proxy.prototype.readDesktopConfig = function(callback) {
+Proxy.prototype.readDesktopConfig = function(String, callback) {
   var l = arguments.length,
       args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
@@ -673,7 +673,7 @@ Proxy.prototype.readDesktopConfig = function(callback) {
  * @return
  *    what will return from this interface
  */
-Proxy.prototype.writeDesktopConfig = function(callback) {
+Proxy.prototype.writeDesktopConfig = function(Object, callback) {
   var l = arguments.length,
       args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
@@ -692,7 +692,7 @@ Proxy.prototype.writeDesktopConfig = function(callback) {
  * @return
  *    what will return from this interface
  */
-Proxy.prototype.shellExec = function(callback) {
+Proxy.prototype.shellExec = function(String, callback) {
   var l = arguments.length,
       args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
@@ -730,7 +730,7 @@ Proxy.prototype.moveFile = function(callback) {
  * @return
  *    what will return from this interface
  */
-Proxy.prototype.renameDesktopFile = function(callback) {
+Proxy.prototype.renameDesktopFile = function(Object, callback) {
   var l = arguments.length,
       args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
@@ -787,7 +787,7 @@ Proxy.prototype.unlinkApp = function(callback) {
  * @return
  *    what will return from this interface
  */
-Proxy.prototype.moveToDesktopSingle = function(callback) {
+Proxy.prototype.moveToDesktopSingle = function(String, callback) {
   var l = arguments.length,
       args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
@@ -920,7 +920,7 @@ Proxy.prototype.getAllMusic = function(callback) {
  * @return
  *    what will return from this interface
  */
-Proxy.prototype.createFileOnDesk = function(callback) {
+Proxy.prototype.createFileOnDesk = function(String, callback) {
   var l = arguments.length,
       args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
@@ -1110,7 +1110,7 @@ Proxy.prototype.deviceInfo = function(callback) {
  * @return
  *    what will return from this interface
  */
-Proxy.prototype.getMusicPicData = function(callback) {
+Proxy.prototype.getMusicPicData = function(String, callback) {
   var l = arguments.length,
       args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
@@ -1129,7 +1129,7 @@ Proxy.prototype.getMusicPicData = function(callback) {
  * @return
  *    what will return from this interface
  */
-Proxy.prototype.getVideoThumbnail = function(callback) {
+Proxy.prototype.getVideoThumbnail = function(String, callback) {
   var l = arguments.length,
       args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
