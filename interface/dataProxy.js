@@ -445,7 +445,7 @@ Proxy.prototype.getResourceDataDir = function(callback) {
  * @return
  *    what will return from this interface
  */
-Proxy.prototype.getAllTagsByCategory = function(Array, callback) {
+Proxy.prototype.getAllTagsByCategory = function(String, callback) {
   var l = arguments.length,
       args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
@@ -540,7 +540,7 @@ Proxy.prototype.setTagByUriMulti = function(callback) {
  * @return
  *    what will return from this interface
  */
-Proxy.prototype.getFilesByTags = function(String, callback) {
+Proxy.prototype.getFilesByTags = function(Object, callback) {
   var l = arguments.length,
       args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
