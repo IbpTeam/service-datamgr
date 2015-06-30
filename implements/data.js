@@ -16,6 +16,8 @@ var config = require('../../../nodewebkit/backend/config');
 var cp = require('child_process');
 var path = require('path');
 var repo = require('../../../nodewebkit/backend/commonHandle/repo');
+var Q = require('q');
+var typeHandle = require("../../../nodewebkit/backend/commonHandle/typeHandle");
 
 /*
  *getLocalData
@@ -143,13 +145,9 @@ exports.loadFile = loadFile;
  */
 function loadResources(loadResourcesCb, path) {
   console.log("Request handler 'loadResources' was called.");
-  var DocList = [];
-  var MusList = [];
-  var VidList = [];
-  var PicList = [];
-  var DskList = [];
-  var OtherList = [];
-  var existFile = [];
+  console.log("run here.");
+  var _postfix_list = null;
+  var _file_list_mix = [];
 
   function walk(path) {
     var dirList = fs.readdirSync(path);
@@ -171,76 +169,35 @@ function loadResources(loadResourcesCb, path) {
       } else if (fs.statSync(path + '/' + item).isFile() && item[0] != '.') {
         var sPosIndex = (item).lastIndexOf(".");
         var sPos = item.slice(sPosIndex + 1, item.length);
-        var category = utils.getCategoryByPath(item).category;
-        if (category !== 'contact') {
-          if (category === 'document') {
-            DocList.push(path + '/' + item);
-          } else if (category === 'picture') {
-            PicList.push(path + '/' + item);
-          } else if (category === 'music') {
-            MusList.push(path + '/' + item);
-          } else if (category === 'video') {
-            VidList.push(path + '/' + item);
-          } else {
-            OtherList.push(path + '/' + item);
-          }
-        }
+        //push it into _file_list_mix 
+        _file_list_mix.push(path + '/' + item);
       } else {
         console.log("can't detect type ...");
       }
     });
   }
-  walk(path);
-
-  documents.createData(DocList, function(err, result) {
-    if (err) {
-      console.log(err);
-      return loadResourcesCb(err, null);
-    }
-    if (result != '' && result != null && typeof result === 'object') {
-      existFile = existFile.concat(result);
-    }
-    pictures.createData(PicList, function(err, result) {
-      if (err) {
-        console.log(err);
-        return loadResourcesCb(err, null);
-      }
-      if (result != '' && result != null && typeof result === 'object') {
-        existFile = existFile.concat(result);
-      }
-      music.createData(MusList, function(err, result) {
-        if (err) {
-          console.log(err);
-          return loadResourcesCb(err, null);
-        }
-        if (result != '' && result != null && typeof result === 'object') {
-          existFile = existFile.concat(result);
-        }
-        video.createData(VidList, function(err, result) {
-          if (err) {
-            console.log(err);
-            return loadResourcesCb(err, null);
-          }
-          if (result != '' && result != null && typeof result === 'object') {
-            existFile = existFile.concat(result);
-          }
-          other.createData(OtherList, function(err, result) {
-            if (err) {
-              console.log(err);
-              return loadResourcesCb(err, null);
-            }
-            if (result != '' && result != null && typeof result === 'object') {
-              existFile = existFile.concat(result);
-            }
-            console.log("load resources success!", existFile);
-            loadResourcesCb(null, existFile);
-          });
-        });
-      });
-    });
-  });
+  return typeHandle.initTypeDef()
+    .then(typeHandle.getPostfixList)
+    .then(function(postfix_list_) {
+      //resign postfix list to _postfix_list
+      _postfix_list = postfix_list_;
+      //walk dir and distribute file list by postfix
+      walk(path);
+      //do createData()
+    })
+    .then(function() {
+      return commonHandle.createData(_file_list_mix);
+    })
+    .then(function(result) {
+      loadResourcesCb(null, result);
+    })
+    .fail(function(err) {
+      loadResourcesCb(err);
+    })
+    .done();
 }
 exports.loadResources = loadResources;
+
 
 /**
  * @method loadContacts

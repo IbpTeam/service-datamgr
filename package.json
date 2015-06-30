@@ -9,7 +9,8 @@
   "main": "start.js",
   "dependencies": {
     "webde-rpc": "~0.1.0",
-    "demo-rio": "~0.0.1"
+    "demo-rio": "~0.0.1",
+    "api": "~0.1.0"
   },
   "devDependencies": {},
   "optionalDependencies": {},
