@@ -320,7 +320,12 @@ var initObj = {
     "name": "repoSearch",
     "in": [],
     "show": "l"
-  }],
+  }, { //test_rdfHandle
+    "name": "test_rdfHandle",
+    "in": [],
+    "show": "l"
+  }], 
+
   "serviceObj": {
     getLocalData: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
     startIMChatServer: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
@@ -358,10 +363,14 @@ var initObj = {
         callback(retObj);
       }, val);
     },
-    /*problem*/getAllCate: function(callback) {
+    getAllCate: function(callback) {
       dataAPI.getAllCate(function(res){
         var retObj = new Object();
-        retObj.ret = JSON.stringify(res);
+        if(err){
+          retObj.retErr = err;
+        }else{
+          retObj.ret = JSON.stringify(res);
+        }
         callback(retObj);
       });
     },
@@ -449,7 +458,7 @@ var initObj = {
         if (err) {
           retObj.retErr = err;
         }else{
-          retObj.ret = result;
+          retObj.ret = JSON.stringify(result);
         };
         callback(retObj);
       }, obj.category, obj.num);
@@ -536,10 +545,10 @@ var initObj = {
     setTagByUri: function(obj, callback) {
       dataAPI.setTagByUri(function(err, result) {
         var retObj = new Object();
-        if (err) {
-          console.log("call setTagByUri error in dataStub. ");
-        } else {
-          retObj.ret = result;
+        if(err){
+            retObj.retErr = err;
+        }else{
+            retObj.ret = "call setTagByUri sucess!";
         }
         callback(retObj);
       }, obj.oTags, obj.sUri);
@@ -821,7 +830,18 @@ var initObj = {
         callback(retObj);
       }, val);
     },
-    repoSearch: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ }
+    repoSearch: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
+    test_rdfHandle: function(callback) {
+      dataAPI.test_rdfHandle(function(err, res) {
+        var retObj = new Object();
+        if (err) {
+          retObj.retErr = err;
+        } else {
+          retObj.ret = res;
+        }
+        callback(retObj);
+      });
+    },
   }
 }
 
