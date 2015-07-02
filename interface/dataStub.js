@@ -767,10 +767,10 @@ var initObj = {
     getIconPath: function(obj, callback) {
       dataAPI.getIconPath(function(err, result) {
         var retObj = new Object();
-        if (err) {
-          console.log("call getIconPath error in dataStub. ");
-        } else {
-          retObj.ret = result;
+        if(err){
+            retObj.retErr = err;
+        }else{
+            retObj.ret = res;
         }
         callback(retObj);
       }, obj.iconName, obj.size);
