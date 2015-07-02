@@ -610,9 +610,13 @@ var initObj = {
       });
     },
     getAllDesktopFile: function(callback) {
-      dataAPI.getAllDesktopFile(function(res) {
+      dataAPI.getAllDesktopFile(function(err, res) {
         var retObj = new Object();
-        retObj.ret = res;
+        if(err){
+            retObj.retErr = err;
+        }else{
+            retObj.ret = JSON.stringify(res);
+        }
         callback(retObj);
       });
     },
@@ -622,7 +626,7 @@ var initObj = {
         if (err) {
           retObj.retErr = err;
         } else {
-          retObj.ret = res;
+          retObj.ret = JSON.stringify(res);
         }
         callback(retObj);
       }, val);
@@ -644,7 +648,7 @@ var initObj = {
         if(err){
             retObj.retErr = err;
         }else{
-            retObj.ret = res;
+            retObj.ret = JSON.stringify(res);
         }
         callback(retObj);
       }, val);
@@ -770,10 +774,10 @@ var initObj = {
         if(err){
             retObj.retErr = err;
         }else{
-            retObj.ret = res;
+            retObj.ret = result;
         }
         callback(retObj);
-      }, obj.iconName, obj.size);
+      }, obj._iconName, obj._size);
     },
     setRelativeTagByPath: function(callback) {
       dataAPI.setRelativeTagByPath(function(err, result) {
