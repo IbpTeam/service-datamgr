@@ -85,7 +85,7 @@ var initObj = {
   }, {
     "name": "updateDataValue",
     "in": [
-      "Object"
+      "String"
     ],
     "show": "l"
   }, {
@@ -110,7 +110,9 @@ var initObj = {
     "show": "l"
   }, {
     "name": "createFile",
-    "in": [],
+    "in": [
+      "Object"
+    ],
     "show": "l"
   }, {
     "name": "getResourceDataDir",
@@ -391,7 +393,7 @@ var initObj = {
         if (err) {
           retObj.retErr = err;
         } else {
-          retObj.ret = res;
+          retObj.ret = JSON.stringify(res);
         };
         callback(retObj);
       });
@@ -441,16 +443,18 @@ var initObj = {
       },val);
     },
      /*deleted*/openDataByPath: function(callback) {},
-    updateDataValue: function(obj, callback) {
+    updateDataValue: function(str, callback) {
+      var obj = JSON.parse(str);
+      console.log(str)
       dataAPI.updateDataValue(function(err,result){
         var retObj = new Object();
         if (err) {
-          console.log("call updateDataValue error in dataStub. ");
+          retObj.retErr = err;
         }else{
-          retObj.ret = res;
+          retObj.ret = "call initDesktop success!";;
         }
         callback(retObj);
-      }, obj.item, obj.uri);
+      }, obj);
     },
     getRecentAccessData: function(obj, callback) {
       dataAPI.getRecentAccessData(function(err,result){
@@ -495,12 +499,12 @@ var initObj = {
       dataAPI.createFile(function(err, result) {
         var retObj = new Object();
         if (err) {
-          console.log("call createFile error in dataStub. ");
+          retObj.retErr = err;
         } else {
-          retObj.ret = result;
+          retObj.ret = "call createFile sucess!";
         }
         callback(retObj);
-      }, obj.filename, obj.category);
+      }, obj.input, obj.category);
     },
     getResourceDataDir: function(callback) { 
        dataAPI.getResourceDataDir(function(res) {
@@ -834,18 +838,7 @@ var initObj = {
         callback(retObj);
       }, val);
     },
-    repoSearch: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
-    test_rdfHandle: function(callback) {
-      dataAPI.test_rdfHandle(function(err, res) {
-        var retObj = new Object();
-        if (err) {
-          retObj.retErr = err;
-        } else {
-          retObj.ret = res;
-        }
-        callback(retObj);
-      });
-    },
+    repoSearch: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ }
   }
 }
 

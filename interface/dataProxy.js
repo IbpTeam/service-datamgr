@@ -312,7 +312,7 @@ Proxy.prototype.openDataByPath = function(callback) {
  * @return
  *    what will return from this interface
  */
-Proxy.prototype.updateDataValue = function(Object, callback) {
+Proxy.prototype.updateDataValue = function(String, callback) {
   var l = arguments.length,
       args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
@@ -407,7 +407,7 @@ Proxy.prototype.pasteFile = function(callback) {
  * @return
  *    what will return from this interface
  */
-Proxy.prototype.createFile = function(callback) {
+Proxy.prototype.createFile = function(Object, callback) {
   var l = arguments.length,
       args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
@@ -1199,16 +1199,4 @@ exports.getProxy = function() {
     proxy = new Proxy();
   }
   return proxy;
-};
-
-
-Proxy.prototype.test_rdfHandle = function(callback) {
-  var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
-  this._ipc.invoke({
-    token: this._token++,
-    name: 'test_rdfHandle',
-    in: args,
-    callback: callback
-  });
 };
