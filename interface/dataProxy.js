@@ -1200,3 +1200,14 @@ exports.getProxy = function() {
   }
   return proxy;
 };
+
+Proxy.prototype.getTmpPath = function(callback) {
+  var l = arguments.length,
+      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+  this._ipc.invoke({
+    token: this._token++,
+    name: 'getTmpPath',
+    in: args,
+    callback: callback
+  });
+};

@@ -322,8 +322,8 @@ var initObj = {
     "name": "repoSearch",
     "in": [],
     "show": "l"
-  }, { //test_rdfHandle
-    "name": "test_rdfHandle",
+  }, { 
+    "name": "getTmpPath",
     "in": [],
     "show": "l"
   }], 
@@ -845,6 +845,17 @@ var initObj = {
         }
         callback(retObj);
       }, val);
+    },
+    getTmpPath: function(callback) {
+      dataAPI.getTmpPath(function(err, res) {
+        var retObj = new Object();
+        if (err) {
+          retObj.retErr = err;
+        } else {
+          retObj.ret = res;
+        }
+        callback(retObj);
+      });
     },
     repoSearch: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ }
   }
