@@ -594,9 +594,9 @@ var initObj = {
       dataAPI.rmTagsByUri(function(err, result) {
         var retObj = new Object();
         if (err) {
-          console.log("call rmTagsByUri error in dataStub. ");
+          retObj.retErr = err;
         } else {
-          retObj.ret = result;
+          retObj.ret = "call rmTagsByUri success!";
         }
         callback(retObj);
       }, obj.sTag, obj.oUri);
@@ -700,6 +700,7 @@ var initObj = {
       dataAPI.moveToDesktopSingle(function(err, res) {
         var retObj = new Object();
         if(err){
+          console.log(err)
           retObj.retErr = err.toString();
         }else{
           retObj.ret = "call moveToDesktopSingle success!";
