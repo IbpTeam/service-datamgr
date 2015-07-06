@@ -445,7 +445,6 @@ var initObj = {
      /*deleted*/openDataByPath: function(callback) {},
     updateDataValue: function(str, callback) {
       var obj = JSON.parse(str);
-      console.log(str)
       dataAPI.updateDataValue(function(err,result){
         var retObj = new Object();
         if (err) {
@@ -737,16 +736,24 @@ var initObj = {
       });
     },
     getAllVideo: function(callback) {
-      dataAPI.getAllVideo(function(res) {
+      dataAPI.getAllVideo(function(err, res) {
         var retObj = new Object();
-        retObj.ret = res;
+        if(err){
+          retObj.retErr = err;
+        }else{
+          retObj.ret = JSON.stringify(res);
+        }
         callback(retObj);
       });
     },
     getAllMusic: function(callback) {
-      dataAPI.getAllMusic(function(res) {
+      dataAPI.getAllMusic(function(err, res) {
         var retObj = new Object();
-        retObj.ret = res;
+        if(err){
+          retObj.retErr = err;
+        }else{
+          retObj.ret = JSON.stringify(res);
+        }
         callback(retObj);
       });
     },
