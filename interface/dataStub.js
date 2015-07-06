@@ -382,7 +382,7 @@ var initObj = {
         if(err){
           retObj.retErr = err;
         }else{
-          retObj.ret = res;
+          retObj.ret = JSON.stringify(res);
         }
         callback(retObj);
       }, val);
