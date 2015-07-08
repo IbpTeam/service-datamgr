@@ -326,6 +326,12 @@ var initObj = {
     "name": "getTmpPath",
     "in": [],
     "show": "l"
+  }, { 
+    "name": "addPreTag",
+    "in": [
+      "Object"
+    ],
+    "show": "l"
   }], 
 
   "serviceObj": {
@@ -856,6 +862,17 @@ var initObj = {
         }
         callback(retObj);
       });
+    },
+    addPreTag: function(obj, callback) {
+      dataAPI.addPreTag(function(err, res) {
+        var retObj = new Object();
+        if (err) {
+          retObj.retErr = err;
+        } else {
+          retObj.ret = "call addPreTag success!";
+        }
+        callback(retObj);
+      }, obj.tag, obj.category);
     },
     repoSearch: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ }
   }
