@@ -857,6 +857,18 @@ var initObj = {
         callback(retObj);
       });
     },
+    importDataBase:function(obj, callback){
+      var retObj = new Object();
+      dataAPI.importDataBase(unction(err, res) {
+        var retObj = new Object();
+        if (err) {
+          retObj.retErr = err;
+        } else {
+          retObj.ret = res;
+        }
+        callback(retObj);
+      },obj.sourceDB, obj.targetDB);
+    }
     repoSearch: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ }
   }
 }
