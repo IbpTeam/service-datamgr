@@ -700,10 +700,9 @@ var initObj = {
       dataAPI.moveToDesktopSingle(function(err, res) {
         var retObj = new Object();
         if(err){
-          console.log(err)
           retObj.retErr = err.toString();
         }else{
-          retObj.ret = "call moveToDesktopSingle success!";
+          retObj.ret = JSON.stringify(res);
         }
         callback(retObj);
       }, val);
