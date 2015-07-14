@@ -473,9 +473,13 @@ var initObj = {
       }, obj.category, obj.num);
     },
     getServerAddress: function(callback) {
-      dataAPI.getServerAddress(function(res) {
+      dataAPI.getServerAddress(function(err, res) {
         var retObj = new Object();
-        retObj.ret = res;
+        if(err){
+            retObj.retErr = err;
+        }else{
+            retObj.ret = JSON.stringify(res);
+        }
         callback(retObj);
       });
     },
@@ -655,9 +659,9 @@ var initObj = {
       dataAPI.shellExec(function(err, res) {
         var retObj = new Object();
         if(err){
-            retObj.retErr = err;
+          retObj.retErr = err;
         }else{
-            retObj.ret = JSON.stringify(res);
+          retObj.ret = res;
         }
         callback(retObj);
       }, val);
@@ -706,10 +710,9 @@ var initObj = {
       dataAPI.moveToDesktopSingle(function(err, res) {
         var retObj = new Object();
         if(err){
-          console.log(err)
           retObj.retErr = err.toString();
         }else{
-          retObj.ret = "call moveToDesktopSingle success!";
+          retObj.ret = JSON.stringify(res);
         }
         callback(retObj);
       }, val);
