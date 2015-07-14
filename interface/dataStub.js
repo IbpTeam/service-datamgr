@@ -467,9 +467,13 @@ var initObj = {
       }, obj.category, obj.num);
     },
     getServerAddress: function(callback) {
-      dataAPI.getServerAddress(function(res) {
+      dataAPI.getServerAddress(function(err, res) {
         var retObj = new Object();
-        retObj.ret = res;
+        if(err){
+            retObj.retErr = err;
+        }else{
+            retObj.ret = JSON.stringify(res);
+        }
         callback(retObj);
       });
     },
