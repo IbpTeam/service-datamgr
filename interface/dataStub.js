@@ -633,7 +633,12 @@ var initObj = {
         if (err) {
           retObj.retErr = err;
         } else {
-          retObj.ret = JSON.stringify(res);
+          if (res === undefined  || res === null) {
+            var _err = new Error("NOT FOUND");
+            retObj.retErr = _err;
+          } else {
+            retObj.ret = res;
+          }
         }
         callback(retObj);
       }, val);
