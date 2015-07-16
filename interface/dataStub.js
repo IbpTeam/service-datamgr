@@ -326,6 +326,12 @@ var initObj = {
     "name": "getTmpPath",
     "in": [],
     "show": "l"
+  }, { 
+    "name": "importMetaData",
+    "in": [
+      "String"
+    ],
+    "show": "l"
   }], 
 
   "serviceObj": {
@@ -857,18 +863,17 @@ var initObj = {
         callback(retObj);
       });
     },
-    importDataBase:function(obj, callback){
+    importMetaData:function(val, callback){
       var retObj = new Object();
-      dataAPI.importDataBase(unction(err, res) {
-        var retObj = new Object();
-        if (err) {
-          retObj.retErr = err;
-        } else {
-          retObj.ret = res;
-        }
+      dataAPI.importMetaData(val)
+      .then(function(){
         callback(retObj);
-      },obj.sourceDB, obj.targetDB);
-    }
+      })
+      .fail(function(err){
+        retObj.retErr = err;
+        callback(retObj);
+      });
+    },
     repoSearch: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ }
   }
 }
