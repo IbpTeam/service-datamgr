@@ -332,7 +332,26 @@ var initObj = {
       "String"
     ],
     "show": "l"
-  }], 
+  },{ 
+    "name": "unZip",
+    "in": [
+      "String"
+    ],
+    "show": "l"
+  },{ 
+    "name": "zipFolder",
+    "in": [
+      "Object"
+    ],
+    "show": "l"
+  },{ 
+    "name": "exportData",
+    "in": [
+      "String"
+    ],
+    "show": "l"
+  }
+  ], 
 
   "serviceObj": {
     getLocalData: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
@@ -866,6 +885,39 @@ var initObj = {
     importMetaData:function(val, callback){
       var retObj = new Object();
       dataAPI.importMetaData(val)
+      .then(function(){
+        callback(retObj);
+      })
+      .fail(function(err){
+        retObj.retErr = err;
+        callback(retObj);
+      });
+    },
+    unZip:function(val, callback){
+      var retObj = new Object();
+      dataAPI.unZip(val)
+      .then(function(){
+        callback(retObj);
+      })
+      .fail(function(err){
+        retObj.retErr = err;
+        callback(retObj);
+      });
+    },
+    zipFolder:function(obj, callback){
+      var retObj = new Object();
+      dataAPI.zipFolder(obj.sFolderPath, obj.sBackupFolder)
+      .then(function(){
+        callback(retObj);
+      })
+      .fail(function(err){
+        retObj.retErr = err;
+        callback(retObj);
+      });
+    },
+    exportData:function(val, callback){
+      var retObj = new Object();
+      dataAPI.exportData(val)
       .then(function(){
         callback(retObj);
       })

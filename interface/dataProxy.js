@@ -1222,3 +1222,36 @@ Proxy.prototype.importMetaData = function(String, callback) {
     callback: callback
   });
 };
+
+Proxy.prototype.unZip = function(String, callback) {
+  var l = arguments.length,
+      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+  this._ipc.invoke({
+    token: this._token++,
+    name: 'unZip',
+    in: args,
+    callback: callback
+  });
+};
+
+Proxy.prototype.zipFolder = function(Object, callback) {
+  var l = arguments.length,
+      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+  this._ipc.invoke({
+    token: this._token++,
+    name: 'zipFolder',
+    in: args,
+    callback: callback
+  });
+};
+
+Proxy.prototype.exportData = function(String, callback) {
+  var l = arguments.length,
+      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+  this._ipc.invoke({
+    token: this._token++,
+    name: 'exportData',
+    in: args,
+    callback: callback
+  });
+};
