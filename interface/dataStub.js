@@ -1,4 +1,5 @@
 var dataAPI = require('demo-rio').requireDataHandle();
+
 // This file is auto generated based on user-defined interface.
 // Please make sure that you have checked all TODOs in this file.
 // TODO: please replace types with peramters' name you wanted of any functions
@@ -354,7 +355,11 @@ var initObj = {
   ], 
 
   "serviceObj": {
-    getLocalData: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
+    getLocalData: function(callback) { 
+      dataAPI.getLocalData(function(localData){
+        callback({ret:localData});
+      });
+    },
     startIMChatServer: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
     sendIMMsg: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
     loadFile: function(val, callback) {
@@ -492,9 +497,13 @@ var initObj = {
       }, obj.category, obj.num);
     },
     getServerAddress: function(callback) {
-      dataAPI.getServerAddress(function(res) {
+      dataAPI.getServerAddress(function(err, res) {
         var retObj = new Object();
-        retObj.ret = res;
+        if(err){
+            retObj.retErr = err;
+        }else{
+            retObj.ret = JSON.stringify(res);
+        }
         callback(retObj);
       });
     },
@@ -654,7 +663,12 @@ var initObj = {
         if (err) {
           retObj.retErr = err;
         } else {
-          retObj.ret = JSON.stringify(res);
+          if (res === undefined  || res === null) {
+            var _err = new Error("NOT FOUND");
+            retObj.retErr = _err;
+          } else {
+            retObj.ret = res;
+          }
         }
         callback(retObj);
       }, val);
@@ -674,9 +688,9 @@ var initObj = {
       dataAPI.shellExec(function(err, res) {
         var retObj = new Object();
         if(err){
-            retObj.retErr = err;
+          retObj.retErr = err;
         }else{
-            retObj.ret = JSON.stringify(res);
+          retObj.ret = res;
         }
         callback(retObj);
       }, val);
@@ -725,10 +739,9 @@ var initObj = {
       dataAPI.moveToDesktopSingle(function(err, res) {
         var retObj = new Object();
         if(err){
-          console.log(err)
           retObj.retErr = err.toString();
         }else{
-          retObj.ret = "call moveToDesktopSingle success!";
+          retObj.ret = JSON.stringify(res);
         }
         callback(retObj);
       }, val);

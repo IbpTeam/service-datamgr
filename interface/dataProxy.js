@@ -1212,8 +1212,19 @@ Proxy.prototype.getTmpPath = function(callback) {
   });
 };
 
+Proxy.prototype.getServerAddress = function(callback) {
+   var l = arguments.length,
+      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+  this._ipc.invoke({
+    token: this._token++,
+    name: 'getServerAddress',
+    in: args,
+    callback: callback
+  });
+};
+
 Proxy.prototype.importMetaData = function(String, callback) {
-  var l = arguments.length,
+   var l = arguments.length,
       args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
