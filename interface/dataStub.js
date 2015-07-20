@@ -1,4 +1,5 @@
 var dataAPI = require('demo-rio').requireDataHandle();
+
 // This file is auto generated based on user-defined interface.
 // Please make sure that you have checked all TODOs in this file.
 // TODO: please replace types with peramters' name you wanted of any functions
@@ -329,7 +330,11 @@ var initObj = {
   }], 
 
   "serviceObj": {
-    getLocalData: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
+    getLocalData: function(callback) { 
+      dataAPI.getLocalData(function(localData){
+        callback({ret:localData});
+      });
+    },
     startIMChatServer: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
     sendIMMsg: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
     loadFile: function(val, callback) {
