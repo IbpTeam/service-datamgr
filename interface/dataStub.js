@@ -327,26 +327,14 @@ var initObj = {
     "name": "getTmpPath",
     "in": [],
     "show": "l"
-  }, { 
-    "name": "importMetaData",
-    "in": [
-      "String"
-    ],
-    "show": "l"
-  },{ 
-    "name": "unZip",
-    "in": [
-      "String"
-    ],
-    "show": "l"
-  },{ 
-    "name": "zipFolder",
-    "in": [
-      "Object"
-    ],
-    "show": "l"
   },{ 
     "name": "exportData",
+    "in": [
+      "String"
+    ],
+    "show": "l"
+  },{ 
+    "name": "importData",
     "in": [
       "String"
     ],
@@ -931,6 +919,17 @@ var initObj = {
     exportData:function(val, callback){
       var retObj = new Object();
       dataAPI.exportData(val)
+      .then(function(){
+        callback(retObj);
+      })
+      .fail(function(err){
+        retObj.retErr = err;
+        callback(retObj);
+      });
+    },
+    importData:function(val, callback){
+      var retObj = new Object();
+      dataAPI.importData(val)
       .then(function(){
         callback(retObj);
       })
