@@ -330,7 +330,7 @@ var initObj = {
   },{ 
     "name": "exportData",
     "in": [
-      "String"
+      "Object"
     ],
     "show": "l"
   },{ 
@@ -916,9 +916,9 @@ var initObj = {
         callback(retObj);
       });
     },
-    exportData:function(val, callback){
+    exportData:function(obj, callback){
       var retObj = new Object();
-      dataAPI.exportData(val)
+      dataAPI.exportData(obj.sEdition, obj.sPath)
       .then(function(){
         callback(retObj);
       })
