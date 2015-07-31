@@ -26,7 +26,7 @@ var initObj = {
   }, {
     "name": "loadFile",
     "in": [
-    "String"
+      "String"
     ],
     "show": "l"
   }, {
@@ -105,7 +105,7 @@ var initObj = {
     "show": "l"
   }, {
     "name": "pasteFile",
-     "in": [
+    "in": [
       "Object"
     ],
     "show": "l"
@@ -323,24 +323,30 @@ var initObj = {
     "name": "repoSearch",
     "in": [],
     "show": "l"
-  }, { 
+  }, {
     "name": "getTmpPath",
     "in": [],
     "show": "l"
-  },{ 
+  }, {
     "name": "exportData",
     "in": [
       "Object"
     ],
     "show": "l"
-  },{ 
+  }, {
     "name": "importData",
     "in": [
       "String"
     ],
     "show": "l"
-  }
-  ], 
+  }, {
+    "name": "addPreTag",
+    "in": [
+      "Object"
+    ],
+    "show": "l"
+  }],
+
 
   "serviceObj": {
     getLocalData: function(callback) { 
@@ -883,39 +889,6 @@ var initObj = {
         callback(retObj);
       });
     },
-    importMetaData:function(val, callback){
-      var retObj = new Object();
-      dataAPI.importMetaData(val)
-      .then(function(){
-        callback(retObj);
-      })
-      .fail(function(err){
-        retObj.retErr = err;
-        callback(retObj);
-      });
-    },
-    unZip:function(val, callback){
-      var retObj = new Object();
-      dataAPI.unZip(val)
-      .then(function(){
-        callback(retObj);
-      })
-      .fail(function(err){
-        retObj.retErr = err;
-        callback(retObj);
-      });
-    },
-    zipFolder:function(obj, callback){
-      var retObj = new Object();
-      dataAPI.zipFolder(obj.sFolderPath, obj.sBackupFolder)
-      .then(function(){
-        callback(retObj);
-      })
-      .fail(function(err){
-        retObj.retErr = err;
-        callback(retObj);
-      });
-    },
     exportData:function(obj, callback){
       var retObj = new Object();
       dataAPI.exportData(obj.sEdition, obj.sPath)
@@ -927,20 +900,31 @@ var initObj = {
         callback(retObj);
       });
     },
-    importData:function(val, callback){
+    importData:function(val, callback) {
       var retObj = new Object();
       dataAPI.importData(val)
-      .then(function(){
+          .then(function () {
+            callback(retObj);
+          })
+          .fail(function (err) {
+            retObj.retErr = err;
+            callback(retObj);
+          });
+    },
+    addPreTag: function(obj, callback) {
+      dataAPI.addPreTag(function(err, res) {
+        var retObj = new Object();
+        if (err) {
+          retObj.retErr = err;
+        } else {
+          retObj.ret = "call addPreTag success!";
+        }
         callback(retObj);
-      })
-      .fail(function(err){
-        retObj.retErr = err;
-        callback(retObj);
-      });
+      }, obj.tag, obj.category);
     },
     repoSearch: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ }
   }
-}
+};
 
 function Stub() {
   // TODO: please replace $IPC with the real path of webde-rpc module in your project
