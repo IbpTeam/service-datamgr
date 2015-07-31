@@ -1212,13 +1212,24 @@ Proxy.prototype.getTmpPath = function(callback) {
   });
 };
 
+Proxy.prototype.addPreTag = function(Object, callback) {
+  var l = arguments.length,
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+  this._ipc.invoke({
+    token: this._token++,
+    name: 'addPreTag',
+    in : args,
+    callback: callback
+  });
+};
+
 Proxy.prototype.getServerAddress = function(callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'getServerAddress',
-    in: args,
+    in : args,
     callback: callback
   });
 };
