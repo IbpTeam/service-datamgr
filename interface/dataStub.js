@@ -336,7 +336,7 @@ var initObj = {
   }, {
     "name": "importData",
     "in": [
-      "String"
+      "Object"
     ],
     "show": "l"
   }, {
@@ -891,25 +891,27 @@ var initObj = {
     },
     exportData:function(obj, callback){
       var retObj = new Object();
-      dataAPI.exportData(obj.sEdition, obj.sPath)
-      .then(function(){
+      dataAPI.exportData(function(err, res) {
+        var retObj = new Object();
+        if (err) {
+          retObj.retErr = err;
+        } else {
+          retObj.ret = "call exportData success!";
+        }
         callback(retObj);
-      })
-      .fail(function(err){
-        retObj.retErr = err;
-        callback(retObj);
-      });
+      }, obj.sEdition, obj.sPath);
     },
-    importData:function(val, callback) {
+    importData:function(obj, callback) {
       var retObj = new Object();
-      dataAPI.importData(val)
-          .then(function () {
-            callback(retObj);
-          })
-          .fail(function (err) {
-            retObj.retErr = err;
-            callback(retObj);
-          });
+      dataAPI.importData(function(err, res) {
+        var retObj = new Object();
+        if (err) {
+          retObj.retErr = err;
+        } else {
+          retObj.ret = "call exportData success!";
+        }
+        callback(retObj);
+      }, obj.sEdition, obj.sPath);
     },
     addPreTag: function(obj, callback) {
       dataAPI.addPreTag(function(err, res) {
