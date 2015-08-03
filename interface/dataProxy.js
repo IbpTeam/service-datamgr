@@ -48,11 +48,11 @@ function Proxy() {
  */
 Proxy.prototype.getLocalData = function(callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'getLocalData',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -67,11 +67,11 @@ Proxy.prototype.getLocalData = function(callback) {
  */
 Proxy.prototype.startIMChatServer = function(callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'startIMChatServer',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -86,11 +86,11 @@ Proxy.prototype.startIMChatServer = function(callback) {
  */
 Proxy.prototype.sendIMMsg = function(callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'sendIMMsg',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -105,11 +105,11 @@ Proxy.prototype.sendIMMsg = function(callback) {
  */
 Proxy.prototype.loadFile = function(String, callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'loadFile',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -124,11 +124,11 @@ Proxy.prototype.loadFile = function(String, callback) {
  */
 Proxy.prototype.loadResources = function(String, callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'loadResources',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -143,11 +143,11 @@ Proxy.prototype.loadResources = function(String, callback) {
  */
 Proxy.prototype.loadContacts = function(String, callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'loadContacts',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -162,11 +162,11 @@ Proxy.prototype.loadContacts = function(String, callback) {
  */
 Proxy.prototype.getAllCate = function(callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'getAllCate',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -181,11 +181,11 @@ Proxy.prototype.getAllCate = function(callback) {
  */
 Proxy.prototype.getAllDataByCate = function(String, callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'getAllDataByCate',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -200,11 +200,11 @@ Proxy.prototype.getAllDataByCate = function(String, callback) {
  */
 Proxy.prototype.getAllContacts = function(callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'getAllContacts',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -219,11 +219,11 @@ Proxy.prototype.getAllContacts = function(callback) {
  */
 Proxy.prototype.rmDataByUri = function(String, callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'rmDataByUri',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -238,11 +238,11 @@ Proxy.prototype.rmDataByUri = function(String, callback) {
  */
 Proxy.prototype.getDataByUri = function(String, callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'getDataByUri',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -257,11 +257,11 @@ Proxy.prototype.getDataByUri = function(String, callback) {
  */
 Proxy.prototype.getDataByPath = function(String, callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'getDataByPath',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -276,11 +276,11 @@ Proxy.prototype.getDataByPath = function(String, callback) {
  */
 Proxy.prototype.openDataByUri = function(String, callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'openDataByUri',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -295,11 +295,11 @@ Proxy.prototype.openDataByUri = function(String, callback) {
  */
 Proxy.prototype.openDataByPath = function(callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'openDataByPath',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -314,11 +314,11 @@ Proxy.prototype.openDataByPath = function(callback) {
  */
 Proxy.prototype.updateDataValue = function(String, callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'updateDataValue',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -333,11 +333,11 @@ Proxy.prototype.updateDataValue = function(String, callback) {
  */
 Proxy.prototype.getRecentAccessData = function(Object, callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'getRecentAccessData',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -352,11 +352,11 @@ Proxy.prototype.getRecentAccessData = function(Object, callback) {
  */
 Proxy.prototype.getServerAddress = function(callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'getServerAddress',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -371,11 +371,11 @@ Proxy.prototype.getServerAddress = function(callback) {
  */
 Proxy.prototype.getDeviceDiscoveryService = function(callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'getDeviceDiscoveryService',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -390,11 +390,11 @@ Proxy.prototype.getDeviceDiscoveryService = function(callback) {
  */
 Proxy.prototype.pasteFile = function(callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'pasteFile',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -409,11 +409,11 @@ Proxy.prototype.pasteFile = function(callback) {
  */
 Proxy.prototype.createFile = function(Object, callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'createFile',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -428,11 +428,11 @@ Proxy.prototype.createFile = function(Object, callback) {
  */
 Proxy.prototype.getResourceDataDir = function(callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'getResourceDataDir',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -447,11 +447,11 @@ Proxy.prototype.getResourceDataDir = function(callback) {
  */
 Proxy.prototype.getAllTagsByCategory = function(String, callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'getAllTagsByCategory',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -466,11 +466,11 @@ Proxy.prototype.getAllTagsByCategory = function(String, callback) {
  */
 Proxy.prototype.getTagsByUri = function(String, callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'getTagsByUri',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -485,11 +485,11 @@ Proxy.prototype.getTagsByUri = function(String, callback) {
  */
 Proxy.prototype.getTagsByUris = function(Object, callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'getTagsByUris',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -504,11 +504,11 @@ Proxy.prototype.getTagsByUris = function(Object, callback) {
  */
 Proxy.prototype.setTagByUri = function(Object, callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'setTagByUri',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -523,11 +523,11 @@ Proxy.prototype.setTagByUri = function(Object, callback) {
  */
 Proxy.prototype.setTagByUriMulti = function(callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'setTagByUriMulti',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -542,11 +542,11 @@ Proxy.prototype.setTagByUriMulti = function(callback) {
  */
 Proxy.prototype.getFilesByTags = function(Object, callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'getFilesByTags',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -561,11 +561,11 @@ Proxy.prototype.getFilesByTags = function(Object, callback) {
  */
 Proxy.prototype.getFilesByTagsInCategory = function(Object, callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'getFilesByTagsInCategory',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -580,11 +580,11 @@ Proxy.prototype.getFilesByTagsInCategory = function(Object, callback) {
  */
 Proxy.prototype.rmTagAll = function(Object, callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'rmTagAll',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -599,11 +599,11 @@ Proxy.prototype.rmTagAll = function(Object, callback) {
  */
 Proxy.prototype.rmTagsByUri = function(Object, callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'rmTagsByUri',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -618,11 +618,11 @@ Proxy.prototype.rmTagsByUri = function(Object, callback) {
  */
 Proxy.prototype.initDesktop = function(callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'initDesktop',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -637,11 +637,11 @@ Proxy.prototype.initDesktop = function(callback) {
  */
 Proxy.prototype.getAllDesktopFile = function(callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'getAllDesktopFile',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -656,11 +656,11 @@ Proxy.prototype.getAllDesktopFile = function(callback) {
  */
 Proxy.prototype.readDesktopConfig = function(String, callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'readDesktopConfig',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -675,11 +675,11 @@ Proxy.prototype.readDesktopConfig = function(String, callback) {
  */
 Proxy.prototype.writeDesktopConfig = function(Object, callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'writeDesktopConfig',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -694,11 +694,11 @@ Proxy.prototype.writeDesktopConfig = function(Object, callback) {
  */
 Proxy.prototype.shellExec = function(String, callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'shellExec',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -713,11 +713,11 @@ Proxy.prototype.shellExec = function(String, callback) {
  */
 Proxy.prototype.moveFile = function(callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'moveFile',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -732,11 +732,11 @@ Proxy.prototype.moveFile = function(callback) {
  */
 Proxy.prototype.renameDesktopFile = function(Object, callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'renameDesktopFile',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -751,11 +751,11 @@ Proxy.prototype.renameDesktopFile = function(Object, callback) {
  */
 Proxy.prototype.linkAppToDesktop = function(callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'linkAppToDesktop',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -770,11 +770,11 @@ Proxy.prototype.linkAppToDesktop = function(callback) {
  */
 Proxy.prototype.unlinkApp = function(callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'unlinkApp',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -789,11 +789,11 @@ Proxy.prototype.unlinkApp = function(callback) {
  */
 Proxy.prototype.moveToDesktopSingle = function(String, callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'moveToDesktopSingle',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -808,11 +808,11 @@ Proxy.prototype.moveToDesktopSingle = function(String, callback) {
  */
 Proxy.prototype.moveToDesktop = function(callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'moveToDesktop',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -827,11 +827,11 @@ Proxy.prototype.moveToDesktop = function(callback) {
  */
 Proxy.prototype.removeFileFromDB = function(callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'removeFileFromDB',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -846,11 +846,11 @@ Proxy.prototype.removeFileFromDB = function(callback) {
  */
 Proxy.prototype.removeFileFromDesk = function(callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'removeFileFromDesk',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -865,11 +865,11 @@ Proxy.prototype.removeFileFromDesk = function(callback) {
  */
 Proxy.prototype.getFilesFromDesk = function(callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'getFilesFromDesk',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -884,11 +884,11 @@ Proxy.prototype.getFilesFromDesk = function(callback) {
  */
 Proxy.prototype.getAllVideo = function(callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'getAllVideo',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -903,11 +903,11 @@ Proxy.prototype.getAllVideo = function(callback) {
  */
 Proxy.prototype.getAllMusic = function(callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'getAllMusic',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -922,11 +922,11 @@ Proxy.prototype.getAllMusic = function(callback) {
  */
 Proxy.prototype.createFileOnDesk = function(String, callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'createFileOnDesk',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -941,11 +941,11 @@ Proxy.prototype.createFileOnDesk = function(String, callback) {
  */
 Proxy.prototype.renameFileOnDesk = function(callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'renameFileOnDesk',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -960,11 +960,11 @@ Proxy.prototype.renameFileOnDesk = function(callback) {
  */
 Proxy.prototype.getIconPath = function(Object, callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'getIconPath',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -979,11 +979,11 @@ Proxy.prototype.getIconPath = function(Object, callback) {
  */
 Proxy.prototype.setRelativeTagByPath = function(callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'setRelativeTagByPath',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -998,11 +998,11 @@ Proxy.prototype.setRelativeTagByPath = function(callback) {
  */
 Proxy.prototype.pullFromOtherRepoTest = function(callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'pullFromOtherRepoTest',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -1017,11 +1017,11 @@ Proxy.prototype.pullFromOtherRepoTest = function(callback) {
  */
 Proxy.prototype.getGitLog = function(callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'getGitLog',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -1036,11 +1036,11 @@ Proxy.prototype.getGitLog = function(callback) {
  */
 Proxy.prototype.repoReset = function(callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'repoReset',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -1055,11 +1055,11 @@ Proxy.prototype.repoReset = function(callback) {
  */
 Proxy.prototype.repoResetFile = function(callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'repoResetFile',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -1074,11 +1074,11 @@ Proxy.prototype.repoResetFile = function(callback) {
  */
 Proxy.prototype.renameDataByUri = function(callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'renameDataByUri',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -1093,11 +1093,11 @@ Proxy.prototype.renameDataByUri = function(callback) {
  */
 Proxy.prototype.deviceInfo = function(callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'deviceInfo',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -1112,11 +1112,11 @@ Proxy.prototype.deviceInfo = function(callback) {
  */
 Proxy.prototype.getMusicPicData = function(String, callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'getMusicPicData',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -1131,11 +1131,11 @@ Proxy.prototype.getMusicPicData = function(String, callback) {
  */
 Proxy.prototype.getVideoThumbnail = function(String, callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'getVideoThumbnail',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -1150,11 +1150,11 @@ Proxy.prototype.getVideoThumbnail = function(String, callback) {
  */
 Proxy.prototype.repoSearch = function(callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'repoSearch',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -1195,7 +1195,7 @@ Proxy.prototype.off = function(event, handler) {
 
 var proxy = null;
 exports.getProxy = function() {
-  if(proxy == null) {
+  if (proxy == null) {
     proxy = new Proxy();
   }
   return proxy;
@@ -1203,22 +1203,22 @@ exports.getProxy = function() {
 
 Proxy.prototype.getTmpPath = function(callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'getTmpPath',
-    in: args,
+    in : args,
     callback: callback
   });
 };
 
 Proxy.prototype.getServerAddjress = function(callback) {
-   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+  var l = arguments.length,
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'getServerAddjress',
-    in: args,
+    in : args,
     callback: callback
   });
 };
@@ -1246,22 +1246,22 @@ Proxy.prototype.getServerAddress = function(callback) {
 
 Proxy.prototype.exportData = function(Object, callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'exportData',
-    in: args,
+    in : args,
     callback: callback
   });
 };
 
 Proxy.prototype.importData = function(String, callback) {
   var l = arguments.length,
-      args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
     token: this._token++,
     name: 'importData',
-    in: args,
+    in : args,
     callback: callback
   });
 };
