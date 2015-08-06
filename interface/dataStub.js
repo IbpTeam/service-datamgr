@@ -26,7 +26,7 @@ var initObj = {
   }, {
     "name": "loadFile",
     "in": [
-    "String"
+      "String"
     ],
     "show": "l"
   }, {
@@ -105,7 +105,7 @@ var initObj = {
     "show": "l"
   }, {
     "name": "pasteFile",
-     "in": [
+    "in": [
       "Object"
     ],
     "show": "l"
@@ -323,34 +323,47 @@ var initObj = {
     "name": "repoSearch",
     "in": [],
     "show": "l"
-  }, { 
+  }, {
     "name": "getTmpPath",
     "in": [],
     "show": "l"
-  }, { 
+  }, {
+    "name": "exportData",
+    "in": [    ],
+    "show": "l"
+  }, {
+    "name": "importData",
+    "in": [
+      "String"
+    ],
+    "show": "l"
+  }, {
     "name": "addPreTag",
     "in": [
       "Object"
     ],
     "show": "l"
-  }], 
+  }],
+
 
   "serviceObj": {
-    getLocalData: function(callback) { 
-      dataAPI.getLocalData(function(localData){
-        callback({ret:localData});
+    getLocalData: function(callback) {
+      dataAPI.getLocalData(function(localData) {
+        callback({
+          ret: localData
+        });
       });
     },
     startIMChatServer: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
     sendIMMsg: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
     loadFile: function(val, callback) {
-      dataAPI.loadFile(function(err,result){
+      dataAPI.loadFile(function(err, result) {
         var retObj = new Object();
         if (err) {
           retObj.retErr = err;
-        }else{
+        } else {
           retObj.ret = "call loadFile success!";
-        };
+        }
         callback(retObj);
       }, val);
     },
@@ -359,7 +372,7 @@ var initObj = {
         var retObj = new Object();
         if (err) {
           retObj.retErr = err;
-        }else{
+        } else {
           retObj.ret = "call loadResources success!";
         };
         callback(retObj);
@@ -370,29 +383,29 @@ var initObj = {
         var retObj = new Object();
         if (err) {
           retObj.retErr = err;
-        }else{
+        } else {
           retObj.ret = "call loadContacts success!";
-        };
+        }
         callback(retObj);
       }, val);
     },
     getAllCate: function(callback) {
-      dataAPI.getAllCate(function(res){
+      dataAPI.getAllCate(function(res) {
         var retObj = new Object();
-        if(err){
+        if (err) {
           retObj.retErr = err;
-        }else{
+        } else {
           retObj.ret = JSON.stringify(res);
         }
         callback(retObj);
       });
     },
     getAllDataByCate: function(val, callback) {
-      dataAPI.getAllDataByCate(function(err, res){
+      dataAPI.getAllDataByCate(function(err, res) {
         var retObj = new Object();
-        if(err){
+        if (err) {
           retObj.retErr = err;
-        }else{
+        } else {
           retObj.ret = JSON.stringify(res);
         }
         callback(retObj);
@@ -405,85 +418,86 @@ var initObj = {
           retObj.retErr = err;
         } else {
           retObj.ret = JSON.stringify(res);
-        };
+        }
         callback(retObj);
       });
     },
     rmDataByUri: function(val, callback) {
-      dataAPI.rmDataByUri(function(err){
+      dataAPI.rmDataByUri(function(err) {
         var retObj = new Object();
         if (err === null) {
           retObj.ret = "success";
-        }else{
+        } else {
           res.ret = res;
         }
         callback(retObj);
-      },val);
+      }, val);
     },
     getDataByUri: function(val, callback) {
-      dataAPI.getDataByUri(function(err, res){
-        var retObj = new Object();
-        if(err){
-            retObj.retErr = err;
-        }else{
-            retObj.ret = JSON.stringify(res);
-        }
-        callback(retObj);
-      },val);
-    },
-    getDataByPath: function(val, callback) {
-      dataAPI.getDataByPath(function(err,res){
+      dataAPI.getDataByUri(function(err, res) {
         var retObj = new Object();
         if (err) {
           retObj.retErr = err;
         } else {
           retObj.ret = JSON.stringify(res);
-        };
+        }
         callback(retObj);
-      },val);
+      }, val);
+    },
+    getDataByPath: function(val, callback) {
+      dataAPI.getDataByPath(function(err, res) {
+        var retObj = new Object();
+        if (err) {
+          retObj.retErr = err;
+        } else {
+          retObj.ret = JSON.stringify(res);
+        }
+        callback(retObj);
+      }, val);
     },
     openDataByUri: function(val, callback) {
-      dataAPI.openDataByUri(function(err, res){
+      dataAPI.openDataByUri(function(err, res) {
         var retObj = new Object();
         if (err) {
           retObj.retErr = err;
         } else {
           retObj.ret = res;
-        };
+        }
         callback(retObj);
-      },val);
+      }, val);
     },
-     /*deleted*/openDataByPath: function(callback) {},
+    /*deleted*/
+    openDataByPath: function(callback) {},
     updateDataValue: function(str, callback) {
       var obj = JSON.parse(str);
-      dataAPI.updateDataValue(function(err,result){
+      dataAPI.updateDataValue(function(err, result) {
         var retObj = new Object();
         if (err) {
           retObj.retErr = err;
-        }else{
-          retObj.ret = "call initDesktop success!";;
+        } else {
+          retObj.ret = "call initDesktop success!";
         }
         callback(retObj);
       }, obj);
     },
     getRecentAccessData: function(obj, callback) {
-      dataAPI.getRecentAccessData(function(err,result){
+      dataAPI.getRecentAccessData(function(err, result) {
         var retObj = new Object();
         if (err) {
           retObj.retErr = err;
-        }else{
+        } else {
           retObj.ret = JSON.stringify(result);
-        };
+        }
         callback(retObj);
       }, obj.category, obj.num);
     },
     getServerAddress: function(callback) {
       dataAPI.getServerAddress(function(err, res) {
         var retObj = new Object();
-        if(err){
-            retObj.retErr = err;
-        }else{
-            retObj.ret = JSON.stringify(res);
+        if (err) {
+          retObj.retErr = err;
+        } else {
+          retObj.ret = JSON.stringify(res);
         }
         callback(retObj);
       });
@@ -520,42 +534,42 @@ var initObj = {
         callback(retObj);
       }, obj.input, obj.category);
     },
-    getResourceDataDir: function(callback) { 
-       dataAPI.getResourceDataDir(function(res) {
+    getResourceDataDir: function(callback) {
+      dataAPI.getResourceDataDir(function(res) {
         var retObj = new Object();
         retObj.ret = res;
         callback(retObj);
       });
     },
     getAllTagsByCategory: function(val, callback) {
-      dataAPI.getAllTagsByCategory(function(err, res){
+      dataAPI.getAllTagsByCategory(function(err, res) {
         var retObj = new Object();
-        if(err){
-            retObj.retErr = err;
-        }else{
-            retObj.ret = JSON.stringify(res);
+        if (err) {
+          retObj.retErr = err;
+        } else {
+          retObj.ret = JSON.stringify(res);
         }
         callback(retObj);
       }, val);
     },
     getTagsByUri: function(val, callback) {
-      dataAPI.getTagsByUri(function(err, res){
+      dataAPI.getTagsByUri(function(err, res) {
         var retObj = new Object();
-        if(err){
-            retObj.retErr = err;
-        }else{
-            retObj.ret = JSON.stringify(res);
+        if (err) {
+          retObj.retErr = err;
+        } else {
+          retObj.ret = JSON.stringify(res);
         }
         callback(retObj);
       }, val);
     },
     getTagsByUris: function(obj, callback) {
-      dataAPI.getTagsByUris(function(err, res){
+      dataAPI.getTagsByUris(function(err, res) {
         var retObj = new Object();
-        if(err){
-            retObj.retErr = err;
-        }else{
-            retObj.ret = JSON.stringify(res);
+        if (err) {
+          retObj.retErr = err;
+        } else {
+          retObj.ret = JSON.stringify(res);
         }
         callback(retObj);
       }, obj);
@@ -563,22 +577,22 @@ var initObj = {
     setTagByUri: function(obj, callback) {
       dataAPI.setTagByUri(function(err, result) {
         var retObj = new Object();
-        if(err){
-            retObj.retErr = err;
-        }else{
-            retObj.ret = "call setTagByUri sucess!";
+        if (err) {
+          retObj.retErr = err;
+        } else {
+          retObj.ret = "call setTagByUri sucess!";
         }
         callback(retObj);
       }, obj.oTags, obj.sUri);
     },
     setTagByUriMulti: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
     getFilesByTags: function(val, callback) {
-      dataAPI.getFilesByTags(function(err, res){
+      dataAPI.getFilesByTags(function(err, res) {
         var retObj = new Object();
-        if(err){
-            retObj.retErr = err;
-        }else{
-            retObj.ret = JSON.stringify(res);
+        if (err) {
+          retObj.retErr = err;
+        } else {
+          retObj.ret = JSON.stringify(res);
         }
         callback(retObj);
       }, val);
@@ -588,9 +602,9 @@ var initObj = {
         var retObj = new Object();
         if (err) {
           retObj.retErr = err;
-        }else{
+        } else {
           retObj.ret = JSON.stringify(res);
-        };
+        }
         callback(retObj);
       }, obj.category, obj.oTags);
     },
@@ -619,10 +633,10 @@ var initObj = {
     initDesktop: function(callback) {
       dataAPI.initDesktop(function(err) {
         var retObj = new Object();
-        if(err){
-            retObj.retErr = err;
-        }else{
-            retObj.ret = "call initDesktop success!";
+        if (err) {
+          retObj.retErr = err;
+        } else {
+          retObj.ret = "call initDesktop success!";
         }
         callback(retObj);
       });
@@ -630,10 +644,10 @@ var initObj = {
     getAllDesktopFile: function(callback) {
       dataAPI.getAllDesktopFile(function(err, res) {
         var retObj = new Object();
-        if(err){
-            retObj.retErr = err;
-        }else{
-            retObj.ret = JSON.stringify(res);
+        if (err) {
+          retObj.retErr = err;
+        } else {
+          retObj.ret = JSON.stringify(res);
         }
         callback(retObj);
       });
@@ -644,7 +658,7 @@ var initObj = {
         if (err) {
           retObj.retErr = err;
         } else {
-          if (res === undefined  || res === null) {
+          if (res === undefined || res === null) {
             var _err = new Error("NOT FOUND");
             retObj.retErr = _err;
           } else {
@@ -668,9 +682,9 @@ var initObj = {
     shellExec: function(val, callback) {
       dataAPI.shellExec(function(err, res) {
         var retObj = new Object();
-        if(err){
+        if (err) {
           retObj.retErr = err;
-        }else{
+        } else {
           retObj.ret = res;
         }
         callback(retObj);
@@ -719,9 +733,9 @@ var initObj = {
     moveToDesktopSingle: function(val, callback) {
       dataAPI.moveToDesktopSingle(function(err, res) {
         var retObj = new Object();
-        if(err){
+        if (err) {
           retObj.retErr = err.toString();
-        }else{
+        } else {
           retObj.ret = JSON.stringify(res);
         }
         callback(retObj);
@@ -758,9 +772,9 @@ var initObj = {
     getAllVideo: function(callback) {
       dataAPI.getAllVideo(function(err, res) {
         var retObj = new Object();
-        if(err){
+        if (err) {
           retObj.retErr = err;
-        }else{
+        } else {
           retObj.ret = JSON.stringify(res);
         }
         callback(retObj);
@@ -769,9 +783,9 @@ var initObj = {
     getAllMusic: function(callback) {
       dataAPI.getAllMusic(function(err, res) {
         var retObj = new Object();
-        if(err){
+        if (err) {
           retObj.retErr = err;
-        }else{
+        } else {
           retObj.ret = JSON.stringify(res);
         }
         callback(retObj);
@@ -802,10 +816,10 @@ var initObj = {
     getIconPath: function(obj, callback) {
       dataAPI.getIconPath(function(err, result) {
         var retObj = new Object();
-        if(err){
-            retObj.retErr = err;
-        }else{
-            retObj.ret = result;
+        if (err) {
+          retObj.retErr = err;
+        } else {
+          retObj.ret = result;
         }
         callback(retObj);
       }, obj._iconName, obj._size);
@@ -846,10 +860,10 @@ var initObj = {
     getMusicPicData: function(val, callback) {
       dataAPI.getMusicPicData(function(err, res) {
         var retObj = new Object();
-        if(err){
-            retObj.retErr = err;
-        }else{
-            retObj.ret = res;
+        if (err) {
+          retObj.retErr = err;
+        } else {
+          retObj.ret = res;
         }
         callback(retObj);
       }, val);
@@ -857,10 +871,10 @@ var initObj = {
     getVideoThumbnail: function(val, callback) {
       dataAPI.getVideoThumbnail(function(err, res) {
         var retObj = new Object();
-        if(err){
-            retObj.retErr = err;
-        }else{
-            retObj.ret = res;
+        if (err) {
+          retObj.retErr = err;
+        } else {
+          retObj.ret = res;
         }
         callback(retObj);
       }, val);
@@ -876,6 +890,28 @@ var initObj = {
         callback(retObj);
       });
     },
+    exportData: function( callback) {
+      dataAPI.exportData(function(err, res) {
+        var retObj = new Object();
+        if (err) {
+          retObj.retErr = err;
+        } else {
+          retObj.ret = res;
+        }
+        callback(retObj);
+      });
+    },
+    importData: function(val, callback) {
+      dataAPI.importData(function(err, res) {
+        var retObj = new Object();
+        if (err) {
+          retObj.retErr = err;
+        } else {
+          retObj.ret = res;
+        }
+        callback(retObj);
+      }, val);
+    },
     addPreTag: function(obj, callback) {
       dataAPI.addPreTag(function(err, res) {
         var retObj = new Object();
@@ -889,7 +925,7 @@ var initObj = {
     },
     repoSearch: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ }
   }
-}
+};
 
 function Stub() {
   // TODO: please replace $IPC with the real path of webde-rpc module in your project
