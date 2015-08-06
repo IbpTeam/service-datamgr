@@ -1244,7 +1244,7 @@ Proxy.prototype.getServerAddress = function(callback) {
   });
 };
 
-Proxy.prototype.exportData = function(Object, callback) {
+Proxy.prototype.exportData = function(callback) {
   var l = arguments.length,
     args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
@@ -1255,7 +1255,7 @@ Proxy.prototype.exportData = function(Object, callback) {
   });
 };
 
-Proxy.prototype.importData = function(Object, callback) {
+Proxy.prototype.importData = function(String, callback) {
   var l = arguments.length,
     args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
   this._ipc.invoke({
