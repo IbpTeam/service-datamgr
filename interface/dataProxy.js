@@ -1265,3 +1265,14 @@ Proxy.prototype.importData = function(String, callback) {
     callback: callback
   });
 };
+
+Proxy.prototype.deleteTmpFile = function(String, callback) {
+  var l = arguments.length,
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+  this._ipc.invoke({
+    token: this._token++,
+    name: 'deleteTmpFile',
+    in : args,
+    callback: callback
+  });
+};

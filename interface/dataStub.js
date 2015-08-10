@@ -343,6 +343,12 @@ var initObj = {
       "Object"
     ],
     "show": "l"
+  }, {
+    "name": "deleteTmpFile",
+    "in": [
+      "String"
+    ],
+    "show": "l"
   }],
 
 
@@ -357,12 +363,12 @@ var initObj = {
     startIMChatServer: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
     sendIMMsg: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ },
     loadFile: function(val, callback) {
-      dataAPI.loadFile(function(err, result) {
+      dataAPI.loadFile(function(err, res) {
         var retObj = new Object();
         if (err) {
           retObj.retErr = err;
         } else {
-          retObj.ret = "call loadFile success!";
+          retObj.ret = res;
         }
         callback(retObj);
       }, val);
@@ -922,6 +928,17 @@ var initObj = {
         }
         callback(retObj);
       }, obj.tag, obj.category);
+    },
+    deleteTmpFile: function(filePath, callback){
+      dataAPI.deleteTmpFile(function(err){
+        var retObj = new Object();
+        if (err) {
+          retObj.retErr = err;
+        } else {
+          retObj.ret = "call deleteTmpFile success!";
+        }
+        callback(retObj);
+      }, filePath);
     },
     repoSearch: function(callback) { /* TODO: Implement your service. Make sure that call the callback at the end of this function whose parameter is the return of this service.*/ }
   }
