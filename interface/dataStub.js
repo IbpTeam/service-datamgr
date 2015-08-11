@@ -329,7 +329,9 @@ var initObj = {
     "show": "l"
   }, {
     "name": "exportData",
-    "in": [],
+    "in": [ 
+    "String"
+    ],
     "show": "l"
   }, {
     "name": "importData",
@@ -896,7 +898,7 @@ var initObj = {
         callback(retObj);
       });
     },
-    exportData: function(callback) {
+    exportData: function(val, callback) {
       dataAPI.exportData(function(err, res) {
         var retObj = new Object();
         if (err) {
@@ -905,7 +907,7 @@ var initObj = {
           retObj.ret = res;
         }
         callback(retObj);
-      });
+      }, val);
     },
     importData: function(val, callback) {
       dataAPI.importData(function(err, res) {
