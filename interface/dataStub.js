@@ -329,7 +329,7 @@ var initObj = {
     "show": "l"
   }, {
     "name": "exportData",
-    "in": [    ],
+    "in": [],
     "show": "l"
   }, {
     "name": "importData",
@@ -896,7 +896,7 @@ var initObj = {
         callback(retObj);
       });
     },
-    exportData: function( callback) {
+    exportData: function(callback) {
       dataAPI.exportData(function(err, res) {
         var retObj = new Object();
         if (err) {
@@ -929,8 +929,8 @@ var initObj = {
         callback(retObj);
       }, obj.tag, obj.category);
     },
-    deleteTmpFile: function(filePath, callback){
-      dataAPI.deleteTmpFile(function(err){
+    deleteTmpFile: function(filePath, callback) {
+      dataAPI.deleteTmpFile(function(err) {
         var retObj = new Object();
         if (err) {
           retObj.retErr = err;
