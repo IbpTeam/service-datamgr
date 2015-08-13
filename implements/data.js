@@ -162,7 +162,11 @@ function loadResources(loadResourcesCb, path) {
               var filename = item + '/' + html5pptList[i] + '.html5ppt';
               fileList.push(path + '/' + filename);
             }*/
-          } else {
+          } 
+          else if(item == "csv"){
+            
+          }
+          else {
             walk(path + '/' + item);
           }
         }

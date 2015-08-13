@@ -334,6 +334,11 @@ var initObj = {
     ],
     "show": "l"
   }, {
+    "name": "clearData",
+    "in": [
+    ],
+    "show": "l"
+  , {
     "name": "importData",
     "in": [
       "String"
@@ -908,6 +913,17 @@ var initObj = {
         }
         callback(retObj);
       }, val);
+    },
+    clearData: function(callback) {
+      dataAPI.clearData(function(err, res) {
+        var retObj = new Object();
+        if (err) {
+          retObj.retErr = err;
+        } else {
+          retObj.ret = res;
+        }
+        callback(retObj);
+      });
     },
     importData: function(val, callback) {
       dataAPI.importData(function(err, res) {
