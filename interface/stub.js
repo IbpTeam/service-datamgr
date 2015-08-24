@@ -334,7 +334,7 @@ var initObj = {
     ],
     "show": "l"
   }, {
-    "name": "clearData",
+    "name": "clearAllData",
     "in": [
     ],
     "show": "l"
@@ -914,8 +914,8 @@ var initObj = {
         callback(retObj);
       }, val);
     },
-    clearData: function(callback) {
-      dataAPI.clearData(function(err, res) {
+    clearAllData: function(callback) {
+      dataAPI.clearAllData(function(err, res) {
         var retObj = new Object();
         if (err) {
           retObj.retErr = err;
