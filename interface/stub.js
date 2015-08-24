@@ -339,7 +339,13 @@ var initObj = {
       "String"
     ],
     "show": "l"
-  }, {
+  }, 
+   {
+    "name": "clearAllData",
+    "in": [    ],
+    "show": "l"
+  }, 
+  {
     "name": "addPreTag",
     "in": [
       "Object"
@@ -919,6 +925,17 @@ var initObj = {
         }
         callback(retObj);
       }, val);
+    },
+    clearAllData: function(callback) {
+      dataAPI.clearAllData(function(err, res) {
+        var retObj = new Object();
+        if (err) {
+          retObj.retErr = err;
+        } else {
+          retObj.ret = res;
+        }
+        callback(retObj);
+      });
     },
     addPreTag: function(obj, callback) {
       dataAPI.addPreTag(function(err, res) {

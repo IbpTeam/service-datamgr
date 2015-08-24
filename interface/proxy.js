@@ -1266,6 +1266,17 @@ Proxy.prototype.importData = function(String, callback) {
   });
 };
 
+Proxy.prototype.clearAllData = function(callback) {
+  var l = arguments.length,
+    args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
+  this._ipc.invoke({
+    token: this._token++,
+    name: 'clearAllData',
+    in : args,
+    callback: callback
+  });
+};
+
 Proxy.prototype.deleteTmpFile = function(String, callback) {
   var l = arguments.length,
     args = Array.prototype.slice.call(arguments, 0, (typeof callback === 'undefined' ? l : l - 1));
