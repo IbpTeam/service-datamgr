@@ -335,10 +335,9 @@ var initObj = {
     "show": "l"
   }, {
     "name": "clearAllData",
-    "in": [
-    ],
+    "in": [],
     "show": "l"
-  , {
+  }  , {
     "name": "importData",
     "in": [
       "String"
