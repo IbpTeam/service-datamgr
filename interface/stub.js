@@ -333,19 +333,17 @@ var initObj = {
     "String"
     ],
     "show": "l"
-  } , {
+  }, {
     "name": "importData",
     "in": [
       "String"
     ],
     "show": "l"
-  }, 
-   {
+  }, {
     "name": "clearAllData",
     "in": [    ],
     "show": "l"
-  }, 
-  {
+  }, {
     "name": "addPreTag",
     "in": [
       "Object"
