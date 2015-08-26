@@ -333,11 +333,7 @@ var initObj = {
     "String"
     ],
     "show": "l"
-  }, {
-    "name": "clearAllData",
-    "in": [],
-    "show": "l"
-  }  , {
+  } , {
     "name": "importData",
     "in": [
       "String"
@@ -918,17 +914,6 @@ var initObj = {
         }
         callback(retObj);
       }, val);
-    },
-    clearAllData: function(callback) {
-      dataAPI.clearAllData(function(err, res) {
-        var retObj = new Object();
-        if (err) {
-          retObj.retErr = err;
-        } else {
-          retObj.ret = res;
-        }
-        callback(retObj);
-      });
     },
     importData: function(val, callback) {
       dataAPI.importData(function(err, res) {
